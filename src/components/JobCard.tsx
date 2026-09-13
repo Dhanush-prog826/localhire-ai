@@ -19,9 +19,9 @@ export const JobCard: React.FC<JobCardProps> = ({
   const isBestMatch = percentage >= 90;
 
   return (
-    <article className="bg-zinc-950/85 border border-red-950/50 hover:border-red-600/60 rounded-2xl p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.8)] hover:shadow-[0_8px_35px_rgba(220,38,38,0.25)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden backdrop-blur-xl">
-      {/* Top subtle red laser sweep line on card hover */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+    <article className="bg-zinc-950/85 border border-blue-950/60 hover:border-cyan-500/60 rounded-2xl p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.8)] hover:shadow-[0_8px_35px_rgba(14,165,233,0.25)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden backdrop-blur-xl">
+      {/* Top subtle cyan laser sweep line on card hover */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
       <div>
         {/* Top Header: Title, Business Name & Match Badge */}
@@ -32,7 +32,7 @@ export const JobCard: React.FC<JobCardProps> = ({
                 {job.businessCategory}
               </span>
               {isBestMatch && (
-                <span className="text-[10px] font-mono font-black px-2 py-0.5 rounded bg-red-950/80 text-red-300 border border-red-800/60 shadow-[0_0_8px_rgba(220,38,38,0.5)]">
+                <span className="text-[10px] font-mono font-black px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/50 shadow-[0_0_8px_rgba(14,165,233,0.5)]">
                   BEST MATCH
                 </span>
               )}
@@ -43,7 +43,7 @@ export const JobCard: React.FC<JobCardProps> = ({
               )}
             </div>
 
-            <h3 className="text-base sm:text-lg font-black text-white group-hover:text-red-400 transition-colors truncate">
+            <h3 className="text-base sm:text-lg font-black text-white group-hover:text-cyan-300 transition-colors truncate">
               {job.title}
             </h3>
 
@@ -54,11 +54,11 @@ export const JobCard: React.FC<JobCardProps> = ({
 
           {/* Circular / Semi-Circular Match Compatibility Indicator */}
           <div className="shrink-0 text-right">
-            <div className="relative w-14 h-14 rounded-full bg-black/90 border-2 border-red-600/70 flex flex-col items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.4)] group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(220,38,38,0.7)] transition-all">
+            <div className="relative w-14 h-14 rounded-full bg-black/90 border-2 border-cyan-500/70 flex flex-col items-center justify-center shadow-[0_0_15px_rgba(14,165,233,0.4)] group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.7)] transition-all">
               <span className="text-sm font-black text-white font-mono leading-none">
                 {percentage}%
               </span>
-              <span className="text-[8px] font-mono uppercase text-red-400 font-bold tracking-tight">
+              <span className="text-[8px] font-mono uppercase text-cyan-400 font-bold tracking-tight">
                 MATCH
               </span>
             </div>
@@ -69,7 +69,7 @@ export const JobCard: React.FC<JobCardProps> = ({
         <div className="grid grid-cols-2 gap-2 my-3.5 py-3 border-y border-zinc-900 text-xs font-mono">
           {/* Distance */}
           <div className="flex items-center gap-2 text-zinc-300">
-            <div className="w-6 h-6 rounded-lg bg-zinc-900 text-red-400 border border-red-950/60 flex items-center justify-center shrink-0">
+            <div className="w-6 h-6 rounded-lg bg-zinc-900 text-cyan-400 border border-blue-950/60 flex items-center justify-center shrink-0">
               <MapPin className="w-3.5 h-3.5" />
             </div>
             <div className="min-w-0">
@@ -108,7 +108,7 @@ export const JobCard: React.FC<JobCardProps> = ({
 
           {/* Required Skills */}
           <div className="flex items-center gap-2 text-zinc-300">
-            <div className="w-6 h-6 rounded-lg bg-zinc-900 text-red-400 border border-red-950/60 flex items-center justify-center shrink-0">
+            <div className="w-6 h-6 rounded-lg bg-zinc-900 text-sky-400 border border-blue-950/60 flex items-center justify-center shrink-0">
               <Wrench className="w-3.5 h-3.5" />
             </div>
             <div className="min-w-0">
@@ -125,10 +125,10 @@ export const JobCard: React.FC<JobCardProps> = ({
           <div className="mb-4">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="w-full flex items-center justify-between text-left py-1 text-xs font-mono font-bold text-zinc-400 hover:text-red-400 focus:outline-none transition-colors cursor-pointer"
+              className="w-full flex items-center justify-between text-left py-1 text-xs font-mono font-bold text-zinc-400 hover:text-cyan-400 focus:outline-none transition-colors cursor-pointer"
             >
               <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                 <span>AI MATCH TELEMETRY</span>
               </span>
               {isExpanded ? (
@@ -155,7 +155,7 @@ export const JobCard: React.FC<JobCardProps> = ({
         <button
           type="button"
           onClick={() => onViewJob(job)}
-          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 active:scale-98 shadow-[0_0_12px_rgba(220,38,38,0.3)] hover:shadow-[0_0_20px_rgba(220,38,38,0.6)] transition-all cursor-pointer font-mono"
+          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 hover:from-blue-500 hover:to-cyan-500 active:scale-98 shadow-[0_0_12px_rgba(14,165,233,0.35)] hover:shadow-[0_0_20px_rgba(56,189,248,0.7)] transition-all cursor-pointer font-mono"
         >
           <Eye className="w-3.5 h-3.5" />
           <span>INSPECT</span>

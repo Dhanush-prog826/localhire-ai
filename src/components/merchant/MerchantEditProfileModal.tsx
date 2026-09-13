@@ -49,12 +49,12 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
     >
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
-      <div className="relative bg-zinc-950 rounded-3xl shadow-2xl border border-red-900/60 w-full max-w-lg overflow-hidden z-10 my-auto">
+      <div className="relative bg-zinc-950 rounded-3xl shadow-2xl border border-blue-900/60 w-full max-w-lg overflow-hidden z-10 my-auto">
         {/* Top laser line */}
-        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 via-orange-500 to-red-600" />
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600" />
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-zinc-950 via-red-950/60 to-zinc-950 p-5 text-white flex items-center justify-between border-b border-red-950/60">
+        <div className="bg-gradient-to-r from-zinc-950 via-blue-950/60 to-zinc-950 p-5 text-white flex items-center justify-between border-b border-blue-950/60">
           <div>
             <h3 className="text-lg font-mono font-bold uppercase tracking-wider text-zinc-100">Edit Merchant Business Profile</h3>
             <p className="text-xs font-mono text-zinc-400">
@@ -64,7 +64,7 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
           <button
             onClick={onClose}
             aria-label="Close edit merchant dialog"
-            className="w-8 h-8 rounded-full bg-zinc-900/80 hover:bg-red-950/80 text-zinc-400 hover:text-white border border-zinc-800 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-full bg-zinc-900/80 hover:bg-blue-950/80 text-zinc-400 hover:text-white border border-zinc-800 flex items-center justify-center transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -84,7 +84,7 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
                   required
                   value={businessName}
                   onChange={(e) => setBusinessName(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-red-600/70"
+                  className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-cyan-500/70"
                 />
               </div>
             </div>
@@ -96,7 +96,7 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
               <select
                 value={businessType}
                 onChange={(e) => setBusinessType(e.target.value)}
-                className="w-full px-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 font-mono focus:outline-none focus:border-red-600/70"
+                className="w-full px-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 font-mono focus:outline-none focus:border-cyan-500/70"
               >
                 <option value="Retail & Grocery">Retail & Grocery</option>
                 <option value="Cafe & Restaurant">Cafe & Restaurant</option>
@@ -112,14 +112,14 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
               Store / Business Location
             </label>
             <div className="relative">
-              <MapPin className="w-4 h-4 text-red-500 absolute left-3 top-3" />
+              <MapPin className="w-4 h-4 text-cyan-400 absolute left-3 top-3" />
               <input
                 type="text"
                 required
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="e.g. Shop 12, Main Market, Sector 14"
-                className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-red-600/70"
+                className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-cyan-500/70"
               />
             </div>
           </div>
@@ -129,14 +129,14 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
               Contact Person / Hiring Manager
             </label>
             <div className="relative">
-              <User className="w-4 h-4 text-orange-400 absolute left-3 top-3" />
+              <User className="w-4 h-4 text-cyan-400 absolute left-3 top-3" />
               <input
                 type="text"
                 required
                 value={contactPerson}
                 onChange={(e) => setContactPerson(e.target.value)}
                 placeholder="Rajesh Gupta (Store Manager)"
-                className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-red-600/70"
+                className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-cyan-500/70"
               />
             </div>
           </div>
@@ -147,13 +147,13 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
                 Official Email
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-amber-400 absolute left-3 top-3" />
+                <Mail className="w-4 h-4 text-blue-400 absolute left-3 top-3" />
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-red-600/70"
+                  className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-cyan-500/70"
                 />
               </div>
             </div>
@@ -163,13 +163,13 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
                 Phone Number
               </label>
               <div className="relative">
-                <Phone className="w-4 h-4 text-red-500 absolute left-3 top-3" />
+                <Phone className="w-4 h-4 text-sky-400 absolute left-3 top-3" />
                 <input
                   type="text"
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-red-600/70"
+                  className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-cyan-500/70"
                 />
               </div>
             </div>
@@ -187,7 +187,7 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
                 value={businessDescription}
                 onChange={(e) => setBusinessDescription(e.target.value)}
                 placeholder="Describe your store, operating hours, and work culture..."
-                className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-red-600/70 resize-none"
+                className="w-full pl-9 pr-3 py-2 bg-zinc-900/90 border border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder-zinc-500 font-mono focus:outline-none focus:border-cyan-500/70 resize-none"
               />
             </div>
           </div>
@@ -203,7 +203,7 @@ export const MerchantEditProfileModal: React.FC<MerchantEditProfileModalProps> =
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white text-xs font-mono font-bold rounded-xl flex items-center gap-1.5 shadow-md shadow-red-950 active:scale-98 transition-all cursor-pointer"
+              className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white text-xs font-mono font-bold rounded-xl flex items-center gap-1.5 shadow-md shadow-blue-950 active:scale-98 transition-all cursor-pointer"
             >
               <Save className="w-4 h-4" />
               <span>SAVE PROFILE</span>

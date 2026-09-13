@@ -73,8 +73,8 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
         };
       case 'Shortlisted':
         return {
-          bg: 'bg-red-950/70 text-red-300 border-red-700/70 shadow-xs shadow-red-950',
-          dot: 'bg-red-400 animate-pulse',
+          bg: 'bg-cyan-950/70 text-cyan-300 border-cyan-700/70 shadow-xs shadow-cyan-950',
+          dot: 'bg-cyan-400 animate-pulse',
         };
       case 'Interview':
         return {
@@ -105,12 +105,12 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 space-y-6 pb-20 sm:pb-8">
       {/* Top Desktop Navigation Tabs */}
-      <div className="hidden sm:flex items-center justify-between border-b border-red-950/40 pb-3">
+      <div className="hidden sm:flex items-center justify-between border-b border-blue-950/60 pb-3">
         <div>
           <h2 className="text-xl font-extrabold text-zinc-100 flex items-center gap-2">
             <span>Welcome back, {seekerProfile.name}</span>
-            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-red-950/60 text-red-400 border border-red-800/50 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-blue-950/60 text-cyan-400 border border-blue-800/50 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               VERIFIED CANDIDATE
             </span>
           </h2>
@@ -120,12 +120,12 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
         </div>
 
         {/* Tactical Command Tabs */}
-        <div className="flex items-center gap-1 bg-zinc-950/90 p-1 rounded-2xl border border-red-950/60 shadow-md">
+        <div className="flex items-center gap-1 bg-zinc-950/90 p-1 rounded-2xl border border-blue-950/60 shadow-md">
           <button
             onClick={() => setActiveTab('dashboard')}
             className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'dashboard'
-                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm shadow-blue-950'
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
@@ -135,7 +135,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
             onClick={() => setActiveTab('jobs')}
             className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'jobs'
-                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm shadow-blue-950'
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
@@ -145,13 +145,13 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
             onClick={() => setActiveTab('applications')}
             className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'applications'
-                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm shadow-blue-950'
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
             <span>APPLICATION STATUS</span>
             {applications.length > 0 && (
-              <span className="w-4 h-4 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
+              <span className="w-4 h-4 rounded-full bg-cyan-500 text-black text-[10px] font-bold flex items-center justify-center">
                 {applications.length}
               </span>
             )}
@@ -160,7 +160,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
             onClick={() => setActiveTab('saved')}
             className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'saved'
-                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm shadow-blue-950'
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
@@ -170,7 +170,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
             onClick={() => setActiveTab('profile')}
             className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'profile'
-                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-sm shadow-blue-950'
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
@@ -186,31 +186,31 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
         <div className="space-y-6">
           {/* Quick Metrics Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+            <div className="bg-zinc-950/85 border border-blue-950/50 hover:border-cyan-500/50 rounded-2xl p-4 shadow-lg transition-all">
               <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Active Applications</p>
-              <p className="text-2xl font-extrabold text-red-500 mt-1">
+              <p className="text-2xl font-extrabold text-cyan-400 mt-1">
                 {applications.length}
               </p>
               <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Live status telemetry</p>
             </div>
 
-            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+            <div className="bg-zinc-950/85 border border-blue-950/50 hover:border-cyan-500/50 rounded-2xl p-4 shadow-lg transition-all">
               <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Saved Jobs</p>
-              <p className="text-2xl font-extrabold text-orange-400 mt-1">
+              <p className="text-2xl font-extrabold text-sky-400 mt-1">
                 {savedJobIds.length}
               </p>
               <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Ready for quick apply</p>
             </div>
 
-            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+            <div className="bg-zinc-950/85 border border-blue-950/50 hover:border-cyan-500/50 rounded-2xl p-4 shadow-lg transition-all">
               <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Nearby Openings</p>
-              <p className="text-2xl font-extrabold text-amber-400 mt-1">
+              <p className="text-2xl font-extrabold text-blue-400 mt-1">
                 {jobs.length}
               </p>
               <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Within 5 km radius</p>
             </div>
 
-            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+            <div className="bg-zinc-950/85 border border-blue-950/50 hover:border-cyan-500/50 rounded-2xl p-4 shadow-lg transition-all">
               <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Highest Match</p>
               <p className="text-2xl font-extrabold text-emerald-400 mt-1">
                 94%
@@ -221,11 +221,11 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
 
           {/* Active Application Status Alert / Banner */}
           {applications.length > 0 && (
-            <div className="bg-zinc-950/90 border border-red-900/50 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 via-orange-500 to-red-600" />
+            <div className="bg-zinc-950/90 border border-blue-900/50 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-lg relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 via-cyan-400 to-sky-400" />
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-red-400 bg-red-950/70 border border-red-800/50 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400 bg-blue-950/70 border border-blue-800/50 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                   APPLICATION DISPATCH TELEMETRY
                 </span>
                 <h4 className="text-sm sm:text-base font-bold text-zinc-100 mt-1.5">
@@ -238,7 +238,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
 
               <button
                 onClick={() => setSelectedAppForTimeline(applications[0])}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-mono font-bold text-red-300 bg-red-950/50 hover:bg-red-900/60 border border-red-800/60 shadow-sm transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-mono font-bold text-cyan-300 bg-blue-950/50 hover:bg-blue-900/60 border border-blue-800/60 shadow-sm transition-colors cursor-pointer"
               >
                 <span>VIEW TIMELINE</span>
                 <ChevronRight className="w-4 h-4" />
@@ -247,17 +247,17 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
           )}
 
           {/* Quick AI Search & Matching Box */}
-          <div className="bg-zinc-950/90 border border-red-950/70 focus-within:border-red-600/60 rounded-3xl p-5 shadow-lg space-y-3 transition-all">
+          <div className="bg-zinc-950/90 border border-blue-950/70 focus-within:border-cyan-500/60 rounded-3xl p-5 shadow-lg space-y-3 transition-all">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-red-500" />
+                <Sparkles className="w-4 h-4 text-cyan-400" />
                 <h3 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-zinc-100">
                   AI Job Recommendation Engine
                 </h3>
               </div>
               <button
                 onClick={() => setActiveTab('jobs')}
-                className="text-xs font-mono text-red-400 hover:text-red-300 flex items-center gap-1 cursor-pointer"
+                className="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 cursor-pointer"
               >
                 <span>Explore all jobs</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -269,7 +269,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="I can work from 6 PM to 10 PM, I know basic Excel, and I'm looking for a part-time job within 5 km."
-              className="w-full text-zinc-100 placeholder:text-zinc-500 text-sm bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3 focus:outline-none focus:border-red-600/60 resize-none font-mono"
+              className="w-full text-zinc-100 placeholder:text-zinc-500 text-sm bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3 focus:outline-none focus:border-cyan-500/60 resize-none font-mono"
             />
 
             <div className="flex justify-between items-center pt-1">
@@ -278,7 +278,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
               </span>
               <button
                 onClick={() => handleSearch(query)}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white text-xs font-mono font-bold shadow-md shadow-red-950 transition-all cursor-pointer flex items-center gap-1.5"
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 hover:from-blue-500 hover:to-cyan-500 text-white text-xs font-mono font-bold shadow-md shadow-blue-950 transition-all cursor-pointer flex items-center gap-1.5"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>UPDATE MATCHES</span>
@@ -315,15 +315,15 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
       {activeTab === 'jobs' && (
         <div className="space-y-6">
           {/* Natural Language Prompt & AI Card */}
-          <div className="bg-zinc-950/90 border border-red-950/70 focus-within:border-red-600/60 rounded-3xl p-5 shadow-lg space-y-4 transition-all">
+          <div className="bg-zinc-950/90 border border-blue-950/70 focus-within:border-cyan-500/60 rounded-3xl p-5 shadow-lg space-y-4 transition-all">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Search className="w-4 h-4 text-red-500" />
+                <Search className="w-4 h-4 text-cyan-400" />
                 <h3 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-zinc-100">
                   Search Jobs in Plain Language
                 </h3>
               </div>
-              <span className="text-[10px] font-mono font-bold text-red-400 bg-red-950/60 border border-red-800/50 px-2 py-0.5 rounded-md">
+              <span className="text-[10px] font-mono font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-800/50 px-2 py-0.5 rounded-md">
                 NLP MATCH ACTIVE
               </span>
             </div>
@@ -333,7 +333,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="I can work from 6 PM to 10 PM, I know basic Excel, and I'm looking for a part-time job within 5 km."
-              className="w-full text-zinc-100 placeholder:text-zinc-500 text-sm bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3 focus:outline-none focus:border-red-600/60 resize-none font-mono"
+              className="w-full text-zinc-100 placeholder:text-zinc-500 text-sm bg-zinc-900/90 border border-zinc-800/90 rounded-2xl p-3 focus:outline-none focus:border-cyan-500/60 resize-none font-mono"
             />
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 pt-2 border-t border-zinc-800/80">
@@ -363,7 +363,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
 
               <button
                 onClick={() => handleSearch(query)}
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white text-xs font-mono font-bold shadow-md shadow-red-950 transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white text-xs font-mono font-bold shadow-md shadow-blue-950 transition-all cursor-pointer flex items-center justify-center gap-1.5"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>FIND MY MATCHES</span>
@@ -378,7 +378,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
           <div className="flex items-center justify-between">
             <h3 className="text-base sm:text-lg font-mono font-bold uppercase tracking-wider text-zinc-100 flex items-center gap-2">
               <span>All Nearby Job Matches</span>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-red-950/60 text-red-400 border border-red-800/50 font-mono font-bold">
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-950/60 text-cyan-300 border border-blue-800/50 font-mono font-bold">
                 {rankedJobs.length} Found
               </span>
             </h3>
@@ -398,12 +398,12 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
                     title={isSaved ? 'Remove from saved' : 'Save job'}
                     className={`absolute top-4 right-16 z-20 w-8 h-8 rounded-full border flex items-center justify-center transition-all cursor-pointer ${
                       isSaved
-                        ? 'bg-red-950/80 border-red-700 text-red-400 shadow-sm shadow-red-950'
-                        : 'bg-zinc-900/90 border-zinc-800 text-zinc-400 hover:text-red-400'
+                        ? 'bg-cyan-950/80 border-cyan-600 text-cyan-300 shadow-sm shadow-cyan-950'
+                        : 'bg-zinc-900/90 border-zinc-800 text-zinc-400 hover:text-cyan-400'
                     }`}
                   >
                     {isSaved ? (
-                      <BookmarkCheck className="w-4 h-4 fill-red-500 text-red-400" />
+                      <BookmarkCheck className="w-4 h-4 fill-cyan-500 text-cyan-300" />
                     ) : (
                       <Bookmark className="w-4 h-4" />
                     )}
@@ -433,13 +433,13 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
                 Real-time telemetry and status updates from neighborhood employers.
               </p>
             </div>
-            <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-red-950/60 text-red-400 border border-red-800/50">
+            <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-blue-950/60 text-cyan-300 border border-blue-800/50">
               {applications.length} Submitted
             </span>
           </div>
 
           {applications.length === 0 ? (
-            <div className="bg-zinc-950/80 border border-red-950/50 rounded-3xl p-12 text-center space-y-3">
+            <div className="bg-zinc-950/80 border border-blue-950/50 rounded-3xl p-12 text-center space-y-3">
               <FileCheck2 className="w-12 h-12 text-zinc-700 mx-auto" />
               <h4 className="text-base font-bold text-zinc-300 font-mono">No applications dispatched</h4>
               <p className="text-xs text-zinc-500 max-w-sm mx-auto font-mono">
@@ -447,7 +447,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
               </p>
               <button
                 onClick={() => setActiveTab('jobs')}
-                className="mt-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white text-xs font-mono font-bold hover:from-red-500 hover:to-red-600 cursor-pointer shadow-md shadow-red-950"
+                className="mt-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-mono font-bold hover:from-blue-500 hover:to-cyan-500 cursor-pointer shadow-md shadow-blue-950"
               >
                 BROWSE RECOMMENDED JOBS
               </button>
@@ -460,14 +460,14 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
                 return (
                   <div
                     key={app.id}
-                    className="bg-zinc-950/85 border border-red-950/50 hover:border-red-600/50 rounded-2xl p-4 sm:p-5 shadow-lg transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group"
+                    className="bg-zinc-950/85 border border-blue-950/50 hover:border-cyan-500/50 rounded-2xl p-4 sm:p-5 shadow-lg transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group"
                   >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
-                        <h4 className="text-base font-bold text-zinc-100 group-hover:text-red-400 transition-colors truncate">
+                        <h4 className="text-base font-bold text-zinc-100 group-hover:text-cyan-400 transition-colors truncate">
                           {app.jobTitle}
                         </h4>
-                        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-red-950/60 text-red-400 border border-red-800/50">
+                        <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-blue-950/60 text-cyan-300 border border-blue-800/50">
                           {app.matchPercentage}% AI Match
                         </span>
                       </div>
@@ -482,7 +482,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
                         <span>•</span>
                         <span className="text-zinc-500">{app.workingHours}</span>
                         <span>•</span>
-                        <span className="font-bold text-red-400">{app.salary}</span>
+                        <span className="font-bold text-cyan-400">{app.salary}</span>
                       </div>
                     </div>
 
@@ -498,7 +498,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
 
                       <button
                         onClick={() => setSelectedAppForTimeline(app)}
-                        className="px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-red-300 bg-red-950/50 hover:bg-red-900/60 border border-red-800/50 transition-colors flex items-center gap-1 cursor-pointer"
+                        className="px-3 py-1.5 rounded-xl text-xs font-mono font-bold text-cyan-300 bg-cyan-950/50 hover:bg-cyan-900/60 border border-cyan-800/50 transition-colors flex items-center gap-1 cursor-pointer"
                       >
                         <span>TIMELINE</span>
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -524,13 +524,13 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
                 Bookmarked opportunities for quick reference and dispatch.
               </p>
             </div>
-            <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-red-950/60 text-red-400 border border-red-800/50">
+            <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-blue-950/60 text-cyan-300 border border-blue-800/50">
               {savedJobs.length} Saved
             </span>
           </div>
 
           {savedJobs.length === 0 ? (
-            <div className="bg-zinc-950/80 border border-red-950/50 rounded-3xl p-12 text-center space-y-3">
+            <div className="bg-zinc-950/80 border border-blue-950/50 rounded-3xl p-12 text-center space-y-3">
               <Bookmark className="w-12 h-12 text-zinc-700 mx-auto" />
               <h4 className="text-base font-bold text-zinc-300 font-mono">No saved jobs bookmarked</h4>
               <p className="text-xs text-zinc-500 max-w-sm mx-auto font-mono">
@@ -538,7 +538,7 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
               </p>
               <button
                 onClick={() => setActiveTab('jobs')}
-                className="mt-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 text-white text-xs font-mono font-bold hover:from-red-500 hover:to-red-600 cursor-pointer shadow-md shadow-red-950"
+                className="mt-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-mono font-bold hover:from-blue-500 hover:to-cyan-500 cursor-pointer shadow-md shadow-blue-950"
               >
                 BROWSE RECOMMENDED JOBS
               </button>
@@ -549,10 +549,10 @@ export const SeekerDashboard: React.FC<SeekerDashboardProps> = ({
                 <div key={job.id} className="relative">
                   <button
                     onClick={() => toggleSaveJob(job.id)}
-                    className="absolute top-4 right-16 z-20 w-8 h-8 rounded-full border bg-red-950/80 border-red-700 text-red-400 flex items-center justify-center cursor-pointer shadow-sm shadow-red-950"
+                    className="absolute top-4 right-16 z-20 w-8 h-8 rounded-full border bg-cyan-950/80 border-cyan-600 text-cyan-300 flex items-center justify-center cursor-pointer shadow-sm shadow-cyan-950"
                     title="Remove from saved"
                   >
-                    <BookmarkCheck className="w-4 h-4 fill-red-500" />
+                    <BookmarkCheck className="w-4 h-4 fill-cyan-500" />
                   </button>
 
                   <JobCard

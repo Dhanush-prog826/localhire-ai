@@ -121,7 +121,7 @@ function MainAppShell() {
 
   // Responsive full-width layout
   const content = (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-slate-100 relative selection:bg-red-600 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#050505] text-slate-100 relative selection:bg-cyan-500 selection:text-zinc-950">
       <Navbar
         isMobileFrame={isMobileFrame}
         setIsMobileFrame={setIsMobileFrame}
@@ -162,26 +162,26 @@ function MainAppShell() {
       <div className="min-h-screen bg-black/95 py-6 px-4 flex flex-col items-center justify-center">
         {/* Frame Top Controls */}
         <div className="text-center mb-3 text-zinc-400 text-xs flex items-center gap-3">
-          <span className="flex items-center gap-1.5 text-red-400 font-mono font-bold uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-red-500" />
+          <span className="flex items-center gap-1.5 text-cyan-400 font-mono font-bold uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
             HOLOGRAPHIC MOBILE VIEW // 412x860
           </span>
           <span className="text-zinc-600">•</span>
           <button
             type="button"
             onClick={() => setIsMobileFrame(false)}
-            className="text-white underline hover:text-red-400 transition-colors cursor-pointer font-mono"
+            className="text-white underline hover:text-cyan-400 transition-colors cursor-pointer font-mono"
           >
             [FULL VIEW]
           </button>
         </div>
 
         {/* Smartphone Shell Frame */}
-        <div className="w-full max-w-[412px] h-[860px] bg-black rounded-[48px] p-3 shadow-[0_0_50px_rgba(220,38,38,0.25)] ring-8 ring-zinc-900 ring-offset-4 ring-offset-black flex flex-col overflow-hidden relative border border-red-950/60">
+        <div className="w-full max-w-[412px] h-[860px] bg-black rounded-[48px] p-3 shadow-[0_0_50px_rgba(14,165,233,0.25)] ring-8 ring-zinc-900 ring-offset-4 ring-offset-black flex flex-col overflow-hidden relative border border-blue-950/70">
           {/* Speaker / Dynamic Island Notch */}
           <div className="w-28 h-5 bg-zinc-950 rounded-full mx-auto my-1.5 flex items-center justify-center shrink-0 z-50 border border-zinc-900">
             <div className="w-3 h-3 rounded-full bg-zinc-900 mr-2" />
-            <div className="w-2.5 h-2.5 rounded-full bg-red-950/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-950/80 border border-cyan-500/40" />
           </div>
 
           {/* Mobile Status Bar */}
@@ -190,7 +190,7 @@ function MainAppShell() {
             <div className="flex items-center gap-1.5 text-zinc-400">
               <Signal className="w-3 h-3" />
               <Wifi className="w-3 h-3" />
-              <Battery className="w-3.5 h-3.5 text-red-500" />
+              <Battery className="w-3.5 h-3.5 text-cyan-400" />
             </div>
           </div>
 

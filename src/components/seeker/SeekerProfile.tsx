@@ -23,8 +23,8 @@ export const SeekerProfile: React.FC = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
       {/* Profile Header Card */}
-      <div className="bg-zinc-950/90 border border-red-950/60 rounded-3xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 via-orange-500 to-red-600" />
+      <div className="bg-zinc-950/90 border border-blue-950/70 rounded-3xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-600" />
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
           <div className="flex items-center gap-4">
@@ -34,15 +34,15 @@ export const SeekerProfile: React.FC = () => {
                 <img
                   src={seekerProfile.avatarUrl}
                   alt={seekerProfile.name}
-                  className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl object-cover ring-2 ring-red-900/60 shadow-lg"
+                  className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl object-cover ring-2 ring-cyan-500/50 shadow-lg"
                 />
               ) : (
-                <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-red-700 via-red-600 to-orange-600 text-white flex items-center justify-center text-2xl font-bold shadow-lg shadow-red-950">
+                <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-blue-700 via-blue-600 to-cyan-500 text-white flex items-center justify-center text-2xl font-bold shadow-lg shadow-blue-950">
                   {seekerProfile.name[0] || 'R'}
                 </div>
               )}
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-red-600 ring-2 ring-zinc-950 flex items-center justify-center text-white shadow-xs" title="Verified Profile">
-                <CheckCircle2 className="w-3 h-3" />
+              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 ring-2 ring-zinc-950 flex items-center justify-center text-zinc-950 shadow-xs" title="Verified Profile">
+                <CheckCircle2 className="w-3.5 h-3.5" />
               </div>
             </div>
 
@@ -51,7 +51,7 @@ export const SeekerProfile: React.FC = () => {
                 <h2 className="text-xl sm:text-2xl font-extrabold text-zinc-100">
                   {seekerProfile.name}
                 </h2>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-950/60 text-red-400 border border-red-800/50 uppercase tracking-wider">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-blue-950/60 text-cyan-400 border border-blue-800/50 uppercase tracking-wider">
                   JOB SEEKER
                 </span>
               </div>
@@ -63,7 +63,7 @@ export const SeekerProfile: React.FC = () => {
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-red-500" />
+                  <MapPin className="w-3.5 h-3.5 text-cyan-400" />
                   {seekerProfile.location}
                 </span>
               </div>
@@ -73,7 +73,7 @@ export const SeekerProfile: React.FC = () => {
           {/* Edit Profile Button */}
           <button
             onClick={() => setIsEditModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-mono font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 border border-red-500/30 transition-all active:scale-98 cursor-pointer shrink-0 shadow-md shadow-red-950"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-mono font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 border border-blue-500/30 transition-all active:scale-98 cursor-pointer shrink-0 shadow-md shadow-blue-950"
           >
             <Edit3 className="w-4 h-4" />
             <span>EDIT PROFILE</span>
@@ -90,7 +90,7 @@ export const SeekerProfile: React.FC = () => {
         {/* Activity Quick Stats */}
         <div className="grid grid-cols-3 gap-2 mt-5 pt-4 border-t border-zinc-800/80 text-center">
           <div className="bg-zinc-900/70 border border-zinc-800/80 rounded-xl p-2.5">
-            <p className="text-base sm:text-lg font-mono font-extrabold text-red-400">
+            <p className="text-base sm:text-lg font-mono font-extrabold text-cyan-400">
               {applications.length}
             </p>
             <p className="text-[10px] text-zinc-400 font-mono uppercase font-semibold">
@@ -98,7 +98,7 @@ export const SeekerProfile: React.FC = () => {
             </p>
           </div>
           <div className="bg-zinc-900/70 border border-zinc-800/80 rounded-xl p-2.5">
-            <p className="text-base sm:text-lg font-mono font-extrabold text-orange-400">
+            <p className="text-base sm:text-lg font-mono font-extrabold text-blue-400">
               {savedJobIds.length}
             </p>
             <p className="text-[10px] text-zinc-400 font-mono uppercase font-semibold">
@@ -106,7 +106,7 @@ export const SeekerProfile: React.FC = () => {
             </p>
           </div>
           <div className="bg-zinc-900/70 border border-zinc-800/80 rounded-xl p-2.5">
-            <p className="text-base sm:text-lg font-mono font-extrabold text-amber-400">
+            <p className="text-base sm:text-lg font-mono font-extrabold text-sky-400">
               {seekerProfile.maxDistanceKm} km
             </p>
             <p className="text-[10px] text-zinc-400 font-mono uppercase font-semibold">
@@ -117,9 +117,9 @@ export const SeekerProfile: React.FC = () => {
       </div>
 
       {/* Profile Details Grid */}
-      <div className="bg-zinc-950/90 border border-red-950/60 rounded-3xl p-5 sm:p-7 shadow-xl space-y-6">
+      <div className="bg-zinc-950/90 border border-blue-950/60 rounded-3xl p-5 sm:p-7 shadow-xl space-y-6">
         <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-red-500" />
+          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
           <span>Hyperlocal Matching Telemetry</span>
         </h3>
 
@@ -127,14 +127,14 @@ export const SeekerProfile: React.FC = () => {
           {/* Skills */}
           <div className="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4">
             <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-300 mb-2">
-              <Wrench className="w-4 h-4 text-orange-400" />
+              <Wrench className="w-4 h-4 text-cyan-400" />
               <span>Skills</span>
             </div>
             <div className="flex flex-wrap gap-1.5">
               {seekerProfile.skills.map((skill, idx) => (
                 <span
                   key={idx}
-                  className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-red-950/60 text-red-300 border border-red-800/50"
+                  className="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-blue-950/60 text-cyan-300 border border-blue-800/50"
                 >
                   {skill}
                 </span>
@@ -145,7 +145,7 @@ export const SeekerProfile: React.FC = () => {
           {/* Availability */}
           <div className="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4">
             <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-300 mb-2">
-              <Clock className="w-4 h-4 text-amber-400" />
+              <Clock className="w-4 h-4 text-sky-400" />
               <span>Availability</span>
             </div>
             <p className="text-sm font-bold text-zinc-100">
@@ -159,7 +159,7 @@ export const SeekerProfile: React.FC = () => {
           {/* Preferred Job Type */}
           <div className="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4">
             <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-300 mb-2">
-              <Briefcase className="w-4 h-4 text-red-400" />
+              <Briefcase className="w-4 h-4 text-cyan-400" />
               <span>Preferred Job Type</span>
             </div>
             <p className="text-sm font-bold text-zinc-100">
@@ -173,7 +173,7 @@ export const SeekerProfile: React.FC = () => {
           {/* Preferred Working Hours */}
           <div className="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4">
             <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-300 mb-2">
-              <Clock className="w-4 h-4 text-orange-400" />
+              <Clock className="w-4 h-4 text-blue-400" />
               <span>Preferred Working Hours</span>
             </div>
             <p className="text-sm font-bold text-zinc-100">
@@ -188,16 +188,16 @@ export const SeekerProfile: React.FC = () => {
           <div className="bg-zinc-900/80 border border-zinc-800/80 rounded-2xl p-4 sm:col-span-2">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-300">
-                <Navigation className="w-4 h-4 text-red-500" />
+                <Navigation className="w-4 h-4 text-cyan-400" />
                 <span>Maximum Travel Distance</span>
               </div>
-              <span className="text-xs font-mono font-bold text-red-400 bg-red-950/60 px-2.5 py-0.5 rounded-md border border-red-800/50">
+              <span className="text-xs font-mono font-bold text-cyan-400 bg-blue-950/60 px-2.5 py-0.5 rounded-md border border-blue-800/50">
                 Within {seekerProfile.maxDistanceKm} km
               </span>
             </div>
             <div className="w-full bg-zinc-800 h-2 rounded-full overflow-hidden">
               <div
-                className="bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 h-full rounded-full transition-all"
+                className="bg-gradient-to-r from-blue-600 via-cyan-400 to-sky-400 h-full rounded-full transition-all"
                 style={{ width: `${Math.min(100, (seekerProfile.maxDistanceKm / 15) * 100)}%` }}
               />
             </div>
@@ -217,8 +217,8 @@ export const SeekerProfile: React.FC = () => {
             <Phone className="w-3.5 h-3.5 text-zinc-500" />
             {seekerProfile.phone}
           </span>
-          <span className="flex items-center gap-1.5 text-red-400 ml-auto font-semibold">
-            <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
+          <span className="flex items-center gap-1.5 text-cyan-400 ml-auto font-semibold">
+            <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
             Clearance Verified
           </span>
         </div>

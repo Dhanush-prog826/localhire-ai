@@ -14,8 +14,8 @@ export const MatchBreakdown: React.FC<MatchBreakdownProps> = ({
   return (
     <div className={`rounded-xl ${compact ? 'bg-black/80 p-3 border border-zinc-800' : 'bg-black/90 p-4 border border-zinc-800 shadow-inner'}`}>
       <div className="flex items-center gap-1.5 mb-2.5">
-        <CheckCircle2 className="w-3.5 h-3.5 text-red-400" />
-        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-red-400">
+        <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400">
           NEURAL MATCH TELEMETRY
         </span>
       </div>
@@ -23,7 +23,7 @@ export const MatchBreakdown: React.FC<MatchBreakdownProps> = ({
       <div className="space-y-2 text-xs font-sans">
         {/* Skills Match */}
         <div className="flex items-start gap-2">
-          <div className="w-5 h-5 rounded bg-zinc-900 border border-zinc-800 text-red-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div className="w-5 h-5 rounded bg-zinc-900 border border-zinc-800 text-cyan-400 flex items-center justify-center shrink-0 mt-0.5">
             <Wrench className="w-3 h-3" />
           </div>
           <div>

@@ -53,23 +53,23 @@ export const LoginPage: React.FC<LoginPageProps> = ({
 
   return (
     <div className="min-h-screen bg-[#050505] text-slate-100 flex flex-col justify-center py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Red Atmospheric Lighting & Background Flares */}
+      {/* Electric Blue Atmospheric Lighting & Background Flares */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-gradient-to-b from-red-600/15 via-red-950/10 to-transparent blur-[120px] rounded-full animate-pulse-crimson" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-gradient-to-b from-blue-600/15 via-cyan-950/10 to-transparent blur-[120px] rounded-full animate-pulse-electric" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `linear-gradient(to right, #ef4444 1px, transparent 1px), linear-gradient(to bottom, #ef4444 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(to right, #0ea5e9 1px, transparent 1px), linear-gradient(to bottom, #0ea5e9 1px, transparent 1px)`,
             backgroundSize: '40px 40px',
           }}
         />
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        {/* Arc Core Emblem */}
-        <div className="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-br from-zinc-900 via-black to-red-950 border border-red-800/60 flex items-center justify-center text-white shadow-[0_0_25px_rgba(220,38,38,0.4)] mb-4 group relative">
-          <div className="absolute inset-1 rounded-xl border border-red-500/30 animate-pulse" />
-          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-[0_0_10px_rgba(239,68,68,0.8)]">
+        {/* Thor Lightning Arc Core Emblem */}
+        <div className="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-br from-zinc-900 via-black to-blue-950 border border-blue-800/60 flex items-center justify-center text-white shadow-[0_0_25px_rgba(14,165,233,0.4)] mb-4 group relative">
+          <div className="absolute inset-1 rounded-xl border border-cyan-500/40 animate-pulse" />
+          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-600 via-cyan-400 to-sky-300 flex items-center justify-center shadow-[0_0_10px_rgba(56,189,248,0.9)] animate-lightning">
             <Zap className="w-3.5 h-3.5 text-black fill-black" />
           </div>
         </div>
@@ -85,13 +85,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({
 
       {/* Main Login Card */}
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-zinc-950/90 backdrop-blur-2xl py-7 sm:py-9 px-5 sm:px-8 shadow-[0_15px_50px_rgba(0,0,0,0.9)] rounded-3xl border border-red-950/70 relative">
+        <div className="bg-zinc-950/90 backdrop-blur-2xl py-7 sm:py-9 px-5 sm:px-8 shadow-[0_15px_50px_rgba(0,0,0,0.9)] rounded-3xl border border-blue-950/70 relative">
           {onBackToHome && (
             <div className="mb-4">
               <button
                 type="button"
                 onClick={onBackToHome}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-400 hover:text-red-400 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-400 hover:text-cyan-400 transition-colors cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>← BACK TO COMMAND CENTER</span>
@@ -113,7 +113,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                 }}
                 className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   role === 'seeker'
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)] border border-red-500/50'
+                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-[0_0_15px_rgba(14,165,233,0.4)] border border-cyan-400/50'
                     : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
@@ -129,7 +129,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                 }}
                 className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   role === 'merchant'
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)] border border-red-500/50'
+                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-[0_0_15px_rgba(14,165,233,0.4)] border border-cyan-400/50'
                     : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
@@ -144,7 +144,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             <h2 className="text-sm sm:text-base font-bold text-white uppercase font-mono">
               {isSignUp ? 'REGISTER PROFILE' : `ACCESS AS ${role === 'seeker' ? 'JOB SEEKER' : 'MERCHANT'}`}
             </h2>
-            <span className="text-[10px] font-mono text-red-400 font-bold bg-red-950/60 border border-red-800/40 px-2 py-0.5 rounded">
+            <span className="text-[10px] font-mono text-cyan-400 font-bold bg-blue-950/60 border border-blue-800/40 px-2 py-0.5 rounded">
               {role === 'seeker' ? 'CANDIDATE' : 'EMPLOYER'}
             </span>
           </div>
@@ -166,7 +166,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={role === 'seeker' ? 'e.g. Rahul Sharma' : 'e.g. ABC Supermarket'}
-                    className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-red-500/80 font-medium transition-colors placeholder:text-zinc-600"
+                    className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-cyan-400/80 font-medium transition-colors placeholder:text-zinc-600"
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="name@example.com or +91 98..."
-                  className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-red-500/80 font-medium transition-colors placeholder:text-zinc-600"
+                  className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-cyan-400/80 font-medium transition-colors placeholder:text-zinc-600"
                 />
               </div>
             </div>
@@ -205,7 +205,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-red-500/80 font-medium transition-colors placeholder:text-zinc-600"
+                  className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-cyan-400/80 font-medium transition-colors placeholder:text-zinc-600"
                 />
               </div>
             </div>
@@ -213,7 +213,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-red-600 via-red-700 to-rose-800 hover:from-red-500 hover:to-red-600 border border-red-500/50 shadow-[0_0_20px_rgba(220,38,38,0.4)] active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider font-mono"
+              className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 hover:from-blue-500 hover:to-cyan-500 border border-cyan-400/50 shadow-[0_0_20px_rgba(14,165,233,0.4)] active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider font-mono"
             >
               {isLoading ? (
                 <Sparkles className="w-4 h-4 animate-spin" />
@@ -231,7 +231,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             <button
               type="button"
               onClick={() => setIsSignUp(!isSignUp)}
-              className="text-xs font-mono text-red-400 hover:text-red-300 transition-colors cursor-pointer"
+              className="text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer"
             >
               {isSignUp
                 ? 'Already have credentials? Sign in'
@@ -241,8 +241,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({
 
           {/* 1-Click Demo Shortcut Section */}
           <div className="mt-6 pt-5 border-t border-zinc-800">
-            <div className="flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-red-400 mb-3 justify-center">
-              <Zap className="w-3.5 h-3.5 text-amber-500" />
+            <div className="flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 mb-3 justify-center">
+              <Zap className="w-3.5 h-3.5 text-cyan-400" />
               <span>1-CLICK DEMO ACCESS PROTOCOL</span>
             </div>
 
@@ -250,13 +250,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({
               <button
                 type="button"
                 onClick={() => handleQuickDemoLogin('seeker')}
-                className="p-3 rounded-xl border border-zinc-800 bg-black/60 hover:border-red-600/50 hover:bg-zinc-900 text-left transition-all cursor-pointer group"
+                className="p-3 rounded-xl border border-zinc-800 bg-black/60 hover:border-cyan-500/50 hover:bg-zinc-900 text-left transition-all cursor-pointer group"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-red-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
+                  <div className="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
                     R
                   </div>
-                  <span className="text-xs font-bold text-zinc-100 group-hover:text-red-400 transition-colors truncate">
+                  <span className="text-xs font-bold text-zinc-100 group-hover:text-cyan-300 transition-colors truncate">
                     Demo Seeker
                   </span>
                 </div>
@@ -268,13 +268,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({
               <button
                 type="button"
                 onClick={() => handleQuickDemoLogin('merchant')}
-                className="p-3 rounded-xl border border-zinc-800 bg-black/60 hover:border-red-600/50 hover:bg-zinc-900 text-left transition-all cursor-pointer group"
+                className="p-3 rounded-xl border border-zinc-800 bg-black/60 hover:border-cyan-500/50 hover:bg-zinc-900 text-left transition-all cursor-pointer group"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-zinc-800 text-red-400 border border-red-600/40 flex items-center justify-center text-xs font-bold shrink-0">
+                  <div className="w-6 h-6 rounded-lg bg-zinc-800 text-cyan-400 border border-cyan-500/40 flex items-center justify-center text-xs font-bold shrink-0">
                     A
                   </div>
-                  <span className="text-xs font-bold text-zinc-100 group-hover:text-red-400 transition-colors truncate">
+                  <span className="text-xs font-bold text-zinc-100 group-hover:text-cyan-300 transition-colors truncate">
                     Demo Merchant
                   </span>
                 </div>
@@ -288,7 +288,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
 
         {/* Security badge */}
         <div className="mt-4 flex items-center justify-center gap-1.5 text-xs font-mono text-zinc-500">
-          <ShieldCheck className="w-4 h-4 text-red-500" />
+          <ShieldCheck className="w-4 h-4 text-cyan-400" />
           <span>LocalHire AI Protocol // Safe Mock Telemetry</span>
         </div>
       </div>

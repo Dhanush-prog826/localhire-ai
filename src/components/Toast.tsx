@@ -10,9 +10,9 @@ export const Toast: React.FC<ToastProps> = ({ message, onClose }) => {
   if (!message) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 max-w-sm w-full bg-zinc-950 text-white rounded-xl p-4 shadow-2xl shadow-red-950/60 border border-red-900/60 flex items-start gap-3 animate-in slide-in-from-bottom-5 duration-200 relative overflow-hidden backdrop-blur-md">
-      <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-red-600 via-orange-500 to-red-600 shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
-      <div className="w-6 h-6 rounded-lg bg-red-950/60 text-red-400 border border-red-900/60 flex items-center justify-center shrink-0 mt-0.5">
+    <div className="fixed bottom-4 right-4 z-50 max-w-sm w-full bg-zinc-950 text-white rounded-xl p-4 shadow-2xl shadow-blue-950/60 border border-blue-900/60 flex items-start gap-3 animate-in slide-in-from-bottom-5 duration-200 relative overflow-hidden backdrop-blur-md">
+      <div className="absolute top-0 bottom-0 left-0 w-1 bg-gradient-to-b from-blue-500 via-cyan-400 to-sky-500 shadow-[0_0_10px_rgba(56,189,248,0.9)]" />
+      <div className="w-6 h-6 rounded-lg bg-blue-950/60 text-cyan-400 border border-blue-800/60 flex items-center justify-center shrink-0 mt-0.5">
         <CheckCircle2 className="w-4 h-4" />
       </div>
       <div className="flex-1 text-xs sm:text-sm font-mono leading-snug text-zinc-200">

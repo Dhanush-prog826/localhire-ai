@@ -53,7 +53,7 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
       case 'Under Review':
         return 'bg-amber-950/60 text-amber-300 border-amber-800/60';
       case 'Shortlisted':
-        return 'bg-red-950/70 text-red-300 border-red-700/70 shadow-xs shadow-red-950';
+        return 'bg-cyan-950/70 text-cyan-300 border-cyan-700/70 shadow-xs shadow-cyan-950';
       case 'Interview':
         return 'bg-purple-950/60 text-purple-300 border-purple-800/60';
       case 'Accepted':
@@ -68,7 +68,7 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
   return (
     <div className="space-y-6">
       {/* Header with Applicant Count Metric */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-950/90 border border-red-950/60 rounded-2xl p-5 shadow-lg">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-950/90 border border-blue-950/60 rounded-2xl p-5 shadow-lg">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <h3 className="text-lg sm:text-xl font-mono font-extrabold uppercase tracking-wider text-zinc-100">
@@ -77,14 +77,14 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
             {filterJobId && (
               <button
                 onClick={onClearFilter}
-                className="text-xs font-mono text-red-400 hover:underline cursor-pointer"
+                className="text-xs font-mono text-cyan-400 hover:underline cursor-pointer"
               >
                 (View all jobs)
               </button>
             )}
           </div>
-          <p className="text-xs font-mono font-bold text-red-400 flex items-center gap-1.5">
-            <Users className="w-4 h-4 text-red-500" />
+          <p className="text-xs font-mono font-bold text-cyan-400 flex items-center gap-1.5">
+            <Users className="w-4 h-4 text-cyan-400" />
             <span>👥 {filteredApplicants.length} CANDIDATES DISPATCHED</span>
           </p>
         </div>
@@ -98,7 +98,7 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
               onClick={() => setStatusFilter(st)}
               className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold shrink-0 transition-colors cursor-pointer border ${
                 statusFilter === st
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white border-red-500 shadow-sm shadow-red-950'
+                  ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-cyan-500 shadow-sm shadow-blue-950'
                   : 'bg-zinc-900 text-zinc-400 hover:text-zinc-200 border-zinc-800 hover:bg-zinc-800'
               }`}
             >
@@ -110,7 +110,7 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
 
       {/* Applicants List Grid */}
       {filteredApplicants.length === 0 ? (
-        <div className="bg-zinc-950/80 border border-red-950/50 rounded-3xl p-12 text-center text-zinc-500 font-mono">
+        <div className="bg-zinc-950/80 border border-blue-950/50 rounded-3xl p-12 text-center text-zinc-500 font-mono">
           <Users className="w-10 h-10 text-zinc-700 mx-auto mb-2" />
           <p className="font-semibold text-sm text-zinc-400">No applicants found for this filter</p>
         </div>
@@ -119,14 +119,14 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
           {filteredApplicants.map((app) => (
             <div
               key={app.id}
-              className="bg-zinc-950/85 border border-red-950/50 hover:border-red-600/50 rounded-2xl p-4 sm:p-5 shadow-lg transition-all flex flex-col justify-between group"
+              className="bg-zinc-950/85 border border-blue-950/50 hover:border-cyan-500/50 rounded-2xl p-4 sm:p-5 shadow-lg transition-all flex flex-col justify-between group"
             >
               <div>
                 {/* Header: Name, Age, and AI Match Score */}
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h4 className="font-bold text-base text-zinc-100 group-hover:text-red-400 transition-colors">
+                      <h4 className="font-bold text-base text-zinc-100 group-hover:text-cyan-400 transition-colors">
                         {app.name}
                       </h4>
                       <span className="text-xs font-mono text-zinc-400">
@@ -139,8 +139,8 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
                   </div>
 
                   {/* Prominent Match % Badge */}
-                  <div className="px-2.5 py-1 rounded-xl bg-red-950/70 text-red-300 border border-red-800/60 text-xs font-mono font-extrabold flex items-center gap-1 shrink-0 shadow-sm shadow-red-950">
-                    <Sparkles className="w-3 h-3 text-red-400" />
+                  <div className="px-2.5 py-1 rounded-xl bg-blue-950/70 text-cyan-300 border border-blue-800/60 text-xs font-mono font-extrabold flex items-center gap-1 shrink-0 shadow-sm shadow-blue-950">
+                    <Sparkles className="w-3 h-3 text-cyan-400" />
                     <span>{app.matchPercentage}% Match</span>
                   </div>
                 </div>
@@ -148,18 +148,18 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
                 {/* 4 Details: Distance, Availability, Skills, Status */}
                 <div className="space-y-1.5 text-xs font-mono text-zinc-400 my-3 py-2.5 border-y border-zinc-800/80">
                   <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                    <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                     <span className="font-medium text-zinc-200">{app.distance}</span>
                     <span className="text-zinc-500 text-[10px]">(Sector 14)</span>
                   </div>
 
                   <div className="flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                    <Clock className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                     <span className="font-medium text-zinc-200">{app.availability}</span>
                   </div>
 
                   <div className="flex items-center gap-1.5">
-                    <Wrench className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+                    <Wrench className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                     <span className="font-medium text-zinc-200 truncate">
                       {app.skills.join(', ')}
                     </span>
@@ -196,8 +196,8 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
                   disabled={app.status === 'Shortlisted'}
                   className={`py-2 px-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1 cursor-pointer ${
                     app.status === 'Shortlisted'
-                      ? 'bg-red-950/70 text-red-400 border border-red-800/60 cursor-default'
-                      : 'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-sm shadow-red-950'
+                      ? 'bg-cyan-950/70 text-cyan-400 border border-cyan-800/60 cursor-default'
+                      : 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white shadow-sm shadow-blue-950'
                   }`}
                 >
                   <ThumbsUp className="w-3.5 h-3.5" />
@@ -211,7 +211,7 @@ export const MerchantApplicants: React.FC<MerchantApplicantsProps> = ({
                   className={`py-2 px-2 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1 cursor-pointer ${
                     app.status === 'Rejected'
                       ? 'bg-zinc-900 text-zinc-600 border border-zinc-800 cursor-default'
-                      : 'bg-zinc-900/90 hover:bg-red-950/40 text-zinc-400 hover:text-red-400 border border-zinc-800'
+                      : 'bg-zinc-900/90 hover:bg-rose-950/40 text-zinc-400 hover:text-rose-400 border border-zinc-800'
                   }`}
                 >
                   <XCircle className="w-3.5 h-3.5" />

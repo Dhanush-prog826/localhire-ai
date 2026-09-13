@@ -25,33 +25,54 @@
   }
 }
 
-/* Custom cinematic dark scrollbar */
+/* Custom cinematic electric-blue scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0e;
+  background: #07090e;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #1e293b;
   border-radius: 9999px;
-  border: 1px solid rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(14, 165, 233, 0.25);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #dc2626;
-  box-shadow: 0 0 10px rgba(220, 38, 38, 0.6);
+  background: #0284c7;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
 }
 
-/* Custom Cinematic Keyframes */
-@keyframes pulse-crimson {
+/* Custom Thor-Lightning & Electric Blue Keyframes */
+@keyframes pulse-electric {
   0%, 100% {
     opacity: 0.35;
     transform: scale(1);
   }
   50% {
-    opacity: 0.65;
-    transform: scale(1.08);
+    opacity: 0.75;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes lightning-flicker {
+  0%, 100% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+  }
+  25% {
+    opacity: 1;
+    filter: drop-shadow(0 0 18px rgba(14, 165, 233, 1)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+  }
+  28% {
+    opacity: 0.8;
+  }
+  32% {
+    opacity: 1;
+    filter: drop-shadow(0 0 24px rgba(56, 189, 248, 1));
+  }
+  70% {
+    opacity: 0.9;
   }
 }
 
@@ -98,15 +119,24 @@
 
 @keyframes glow-breathe {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(220, 38, 38, 0.2), inset 0 0 10px rgba(220, 38, 38, 0.05);
+    box-shadow: 0 0 16px rgba(14, 165, 233, 0.25), inset 0 0 10px rgba(14, 165, 233, 0.08);
   }
   50% {
-    box-shadow: 0 0 28px rgba(220, 38, 38, 0.45), inset 0 0 15px rgba(220, 38, 38, 0.15);
+    box-shadow: 0 0 32px rgba(56, 189, 248, 0.55), inset 0 0 16px rgba(56, 189, 248, 0.2);
   }
 }
 
+.animate-pulse-electric {
+  animation: pulse-electric 4s ease-in-out infinite;
+}
+
 .animate-pulse-crimson {
-  animation: pulse-crimson 4s ease-in-out infinite;
+  /* backwards-compatibility alias to electric */
+  animation: pulse-electric 4s ease-in-out infinite;
+}
+
+.animate-lightning {
+  animation: lightning-flicker 5s ease-in-out infinite;
 }
 
 .animate-hud-spin {
@@ -125,7 +155,12 @@
   animation: float-particle 6s ease-in-out infinite;
 }
 
+.glow-electric-box {
+  animation: glow-breathe 3.5s ease-in-out infinite;
+}
+
 .glow-crimson-box {
+  /* backwards-compatibility alias to electric */
   animation: glow-breathe 3.5s ease-in-out infinite;
 }
 
