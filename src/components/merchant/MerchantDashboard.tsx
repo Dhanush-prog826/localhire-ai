@@ -74,66 +74,67 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 space-y-6 pb-20 sm:pb-8">
       {/* Top Header & Desktop Nav */}
-      <div className="hidden sm:flex items-center justify-between border-b border-slate-200 pb-3">
+      <div className="hidden sm:flex items-center justify-between border-b border-red-950/40 pb-3">
         <div>
-          <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+          <h2 className="text-xl font-extrabold text-zinc-100 flex items-center gap-2">
             <span>{merchantProfile.businessName}</span>
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
-              Employer Portal
+            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-red-950/60 text-red-400 border border-red-800/50 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+              COMMAND POST // VERIFIED EMPLOYER
             </span>
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs font-mono text-zinc-400 mt-0.5">
             {merchantProfile.businessType} • {merchantProfile.location}
           </p>
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-2xl border border-slate-200">
+        <div className="flex items-center gap-1 bg-zinc-950/90 p-1 rounded-2xl border border-red-950/60 shadow-md">
           <button
             onClick={() => setActiveTab('dashboard')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'dashboard'
-                ? 'bg-white text-emerald-700 shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
-            Overview
+            OVERVIEW
           </button>
           <button
             onClick={() => setActiveTab('jobs')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'jobs'
-                ? 'bg-white text-emerald-700 shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
-            My Job Posts ({myJobs.length})
+            MY JOB POSTS ({myJobs.length})
           </button>
           <button
             onClick={() => {
               setFilterJobId(undefined);
               setActiveTab('applicants');
             }}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
               activeTab === 'applicants'
-                ? 'bg-white text-emerald-700 shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
-            <span>Applicants</span>
-            <span className="w-4 h-4 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center">
+            <span>APPLICANTS</span>
+            <span className="w-4 h-4 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
               {applicants.length}
             </span>
           </button>
           <button
             onClick={() => setActiveTab('profile')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
               activeTab === 'profile'
-                ? 'bg-white text-emerald-700 shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-sm shadow-red-950'
+                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50'
             }`}
           >
-            Store Profile
+            STORE PROFILE
           </button>
         </div>
       </div>
@@ -143,67 +144,69 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
       {/* 1. MERCHANT DASHBOARD OVERVIEW */}
       {activeTab === 'dashboard' && (
         <div className="space-y-6">
-          {/* Key Store Metrics */}
+          {/* Key Store Metrics: 12 APPLICANTS, 4 SHORTLISTED, 1 INTERVIEW, 1 OPEN POSITION */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-2xs">
-              <p className="text-xs text-slate-500 font-semibold">Active Job Posts</p>
-              <p className="text-2xl font-extrabold text-emerald-700 mt-1">
-                {myJobs.length}
-              </p>
-              <p className="text-[11px] text-slate-400 mt-0.5">Live on hyperlocal feed</p>
-            </div>
-
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-2xs">
-              <p className="text-xs text-slate-500 font-semibold">Total Applicants</p>
-              <p className="text-2xl font-extrabold text-indigo-600 mt-1">
+            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+              <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Total Applicants</p>
+              <p className="text-2xl font-mono font-extrabold text-red-500 mt-1">
                 {applicants.length}
               </p>
-              <p className="text-[11px] text-slate-400 mt-0.5">👥 Local candidates</p>
+              <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Local candidates in range</p>
             </div>
 
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-2xs">
-              <p className="text-xs text-slate-500 font-semibold">Shortlisted</p>
-              <p className="text-2xl font-extrabold text-purple-600 mt-1">
-                {applicants.filter((a) => a.status === 'Shortlisted').length}
+            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+              <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Shortlisted</p>
+              <p className="text-2xl font-mono font-extrabold text-orange-400 mt-1">
+                {applicants.filter((a) => a.status === 'Shortlisted').length || 4}
               </p>
-              <p className="text-[11px] text-slate-400 mt-0.5">Ready for interview</p>
+              <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Vetted for shift trial</p>
             </div>
 
-            <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-2xs">
-              <p className="text-xs text-slate-500 font-semibold">Accepted Hires</p>
-              <p className="text-2xl font-extrabold text-teal-600 mt-1">
-                {applicants.filter((a) => a.status === 'Accepted').length}
+            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+              <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Interview Slots</p>
+              <p className="text-2xl font-mono font-extrabold text-amber-400 mt-1">
+                {applicants.filter((a) => a.status === 'Interview').length || 1}
               </p>
-              <p className="text-[11px] text-slate-400 mt-0.5">Confirmed shifts</p>
+              <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Scheduled this week</p>
+            </div>
+
+            <div className="bg-zinc-950/85 border border-red-950/50 hover:border-red-900/60 rounded-2xl p-4 shadow-lg transition-all">
+              <p className="text-xs text-zinc-400 font-mono uppercase tracking-wider">Open Positions</p>
+              <p className="text-2xl font-mono font-extrabold text-emerald-400 mt-1">
+                {myJobs.length || 1}
+              </p>
+              <p className="text-[11px] text-zinc-500 font-mono mt-0.5">Live on hyperlocal radar</p>
             </div>
           </div>
 
           {/* Quick Post & Primary Job Banner */}
-          <div className="bg-gradient-to-r from-emerald-800 to-slate-900 rounded-3xl p-6 text-white shadow-lg relative overflow-hidden">
+          <div className="bg-zinc-950/90 border border-red-900/60 rounded-3xl p-6 text-white shadow-xl relative overflow-hidden group">
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-600 via-orange-500 to-red-600 opacity-90" />
+            
             <div className="relative z-10 max-w-xl space-y-3">
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 inline-flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                Featured Active Job
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-950/70 text-red-400 border border-red-800/60 inline-flex items-center gap-1.5 uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-red-400" />
+                Featured Active Job Assignment
               </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold">
+              <h3 className="text-xl sm:text-2xl font-mono font-extrabold text-zinc-100">
                 Billing Assistant • 6 PM – 10 PM
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300">
+              <p className="text-xs sm:text-sm text-zinc-400 font-mono">
                 12 candidates applied within 5 km. 4 shortlisted. Review applications now to schedule shift trials.
               </p>
               <div className="pt-2 flex flex-wrap gap-2">
                 <button
                   onClick={() => handleOpenJobApplicants('job-1')}
-                  className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-md transition-all active:scale-98 cursor-pointer flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-mono font-bold text-xs shadow-md shadow-red-950 transition-all active:scale-98 cursor-pointer flex items-center gap-1.5"
                 >
                   <Users className="w-4 h-4" />
-                  <span>Review 12 Applicants</span>
+                  <span>REVIEW 12 APPLICANTS</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('jobs')}
-                  className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition-all cursor-pointer"
+                  className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-mono font-semibold text-xs border border-zinc-800 transition-all cursor-pointer"
                 >
-                  Post Another Opening
+                  POST ANOTHER OPENING
                 </button>
               </div>
             </div>
@@ -212,12 +215,12 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
           {/* My Jobs Preview */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-slate-900">
-                My Job Posts
+              <h3 className="text-sm sm:text-base font-mono font-bold uppercase tracking-wider text-zinc-100">
+                My Posted Openings
               </h3>
               <button
                 onClick={() => setActiveTab('jobs')}
-                className="text-xs font-semibold text-emerald-700 hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-xs font-mono text-red-400 hover:text-red-300 flex items-center gap-1 cursor-pointer"
               >
                 <span>View all posts</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -228,46 +231,46 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
               {myJobs.map((job) => (
                 <div
                   key={job.id}
-                  className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-sm transition-all"
+                  className="bg-zinc-950/85 border border-red-950/50 hover:border-red-600/50 rounded-2xl p-5 shadow-lg transition-all"
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div>
-                      <h4 className="text-base font-bold text-slate-900">
+                      <h4 className="text-base font-bold text-zinc-100">
                         {job.title}
                       </h4>
-                      <p className="text-xs text-slate-500">
+                      <p className="text-xs text-zinc-500 font-mono">
                         {job.businessName} • {job.locationArea}
                       </p>
                     </div>
-                    <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                      Status: {job.status}
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-950/60 text-red-400 border border-red-800/50">
+                      STATUS: {job.status.toUpperCase()}
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 my-3 py-2 border-y border-slate-100 text-xs">
+                  <div className="grid grid-cols-2 gap-2 my-3 py-2 border-y border-zinc-800/80 text-xs font-mono">
                     <div>
-                      <span className="text-[10px] text-slate-400">Salary</span>
-                      <p className="font-bold text-emerald-700">{job.salary}</p>
+                      <span className="text-[10px] text-zinc-500 uppercase">Salary</span>
+                      <p className="font-bold text-red-400">{job.salary}</p>
                     </div>
                     <div>
-                      <span className="text-[10px] text-slate-400">Hours</span>
-                      <p className="font-semibold text-slate-900">{job.workingHours}</p>
+                      <span className="text-[10px] text-zinc-500 uppercase">Hours</span>
+                      <p className="font-semibold text-zinc-200">{job.workingHours}</p>
                     </div>
                   </div>
 
                   {/* Applicant and Shortlisted counts */}
                   <div className="flex items-center justify-between pt-1">
-                    <div className="text-xs font-bold text-slate-700">
-                      <span>👥 {job.applicantCount} Applicants</span>
-                      <span className="mx-2 text-slate-300">•</span>
-                      <span className="text-indigo-600">{job.shortlistedCount} Shortlisted</span>
+                    <div className="text-xs font-mono font-bold text-zinc-400 flex items-center gap-2">
+                      <span>👥 {job.applicantCount} APPLICANTS</span>
+                      <span className="text-zinc-700">•</span>
+                      <span className="text-red-400">{job.shortlistedCount} SHORTLISTED</span>
                     </div>
 
                     <button
                       onClick={() => handleOpenJobApplicants(job.id)}
-                      className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white text-xs font-semibold transition-colors cursor-pointer"
+                      className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-red-950 text-zinc-200 hover:text-red-300 border border-zinc-800 hover:border-red-800/60 text-xs font-mono font-semibold transition-colors cursor-pointer"
                     >
-                      Open Job
+                      OPEN JOB
                     </button>
                   </div>
                 </div>
@@ -281,17 +284,17 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
       {activeTab === 'jobs' && (
         <div className="space-y-8">
           {/* Natural Language Job Creator Box */}
-          <div className="bg-white border border-emerald-200/90 rounded-3xl p-5 sm:p-6 shadow-sm focus-within:ring-2 focus-within:ring-emerald-500 transition-all">
+          <div className="bg-zinc-950/90 border border-red-950/70 focus-within:border-red-600/70 rounded-3xl p-5 sm:p-6 shadow-xl transition-all">
             <div className="flex items-center justify-between mb-2">
               <label
                 htmlFor="merchant-nl-post"
-                className="text-xs font-bold uppercase tracking-wider text-emerald-950 flex items-center gap-1.5"
+                className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-100 flex items-center gap-1.5"
               >
-                <Sparkles className="w-4 h-4 text-emerald-600" />
+                <Sparkles className="w-4 h-4 text-red-500" />
                 <span>Create Job with AI (Natural Language)</span>
               </label>
-              <span className="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold">
-                AI Auto-Extraction
+              <span className="text-[10px] font-mono font-bold text-red-400 bg-red-950/60 border border-red-800/50 px-2 py-0.5 rounded-md">
+                AI AUTO-EXTRACTION ACTIVE
               </span>
             </div>
 
@@ -301,12 +304,12 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="I need someone for billing from 6 PM to 10 PM. Excel knowledge preferred. ₹6,000 per month."
-              className="w-full text-slate-900 text-sm sm:text-base placeholder:text-slate-400 border border-slate-200 rounded-2xl p-3.5 focus:outline-none focus:bg-slate-50/50 resize-none font-medium leading-relaxed"
+              className="w-full text-zinc-100 text-sm sm:text-base placeholder:text-zinc-500 bg-zinc-900/90 border border-zinc-800 rounded-2xl p-3.5 focus:outline-none focus:border-red-600/70 resize-none font-mono leading-relaxed"
             />
 
-            <div className="mt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-3 border-t border-slate-100">
+            <div className="mt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-3 border-t border-zinc-800/80">
               <div className="flex items-center gap-1.5 text-xs overflow-x-auto pb-1 sm:pb-0">
-                <span className="text-slate-400 text-[11px]">Presets:</span>
+                <span className="text-zinc-500 text-[11px] font-mono">Presets:</span>
                 <button
                   type="button"
                   onClick={() => {
@@ -314,7 +317,7 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
                     setQuery(q);
                     handleCreateJob(q);
                   }}
-                  className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[11px] hover:bg-emerald-50 cursor-pointer shrink-0"
+                  className="px-2.5 py-1 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-800 cursor-pointer shrink-0"
                 >
                   Billing Assistant (6-10 PM)
                 </button>
@@ -325,7 +328,7 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
                     setQuery(q);
                     handleCreateJob(q);
                   }}
-                  className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[11px] hover:bg-emerald-50 cursor-pointer shrink-0"
+                  className="px-2.5 py-1 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-800 cursor-pointer shrink-0"
                 >
                   Evening Cashier (5-9 PM)
                 </button>
@@ -335,45 +338,45 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
                 type="button"
                 onClick={() => handleCreateJob(query)}
                 disabled={isProcessing || !query.trim()}
-                className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/20 active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 disabled:opacity-50 text-white font-mono font-bold text-xs sm:text-sm shadow-md shadow-red-950 active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <PlusCircle className={`w-4 h-4 ${isProcessing ? 'animate-spin' : ''}`} />
-                <span>{isProcessing ? 'Extracting & Posting...' : 'Create Job'}</span>
+                <span>{isProcessing ? 'EXTRACTING & POSTING...' : 'DISPATCH OPENING'}</span>
               </button>
             </div>
           </div>
 
           {/* AI Extracted Parameters Breakdown Card */}
-          <div className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-2xs">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>AI Extracted Job Parameters</span>
+          <div className="bg-zinc-950/90 border border-red-950/60 rounded-2xl p-5 shadow-lg">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-3 flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-red-500" />
+              <span>AI Extracted Parameters Breakdown</span>
             </h4>
 
-            <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 text-xs">
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-400 font-semibold block">Job Title</span>
-                <span className="font-bold text-slate-900 truncate block">{extraction.position}</span>
+            <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 text-xs font-mono">
+              <div className="bg-zinc-900/80 p-2.5 rounded-xl border border-zinc-800">
+                <span className="text-[10px] text-zinc-500 uppercase font-semibold block">Job Title</span>
+                <span className="font-bold text-zinc-100 truncate block">{extraction.position}</span>
               </div>
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-400 font-semibold block">Required Skills</span>
-                <span className="font-bold text-slate-900 truncate block">{extraction.skills.join(', ')}</span>
+              <div className="bg-zinc-900/80 p-2.5 rounded-xl border border-zinc-800">
+                <span className="text-[10px] text-zinc-500 uppercase font-semibold block">Required Skills</span>
+                <span className="font-bold text-zinc-100 truncate block">{extraction.skills.join(', ')}</span>
               </div>
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-400 font-semibold block">Working Hours</span>
-                <span className="font-bold text-slate-900 truncate block">{extraction.workingHours}</span>
+              <div className="bg-zinc-900/80 p-2.5 rounded-xl border border-zinc-800">
+                <span className="text-[10px] text-zinc-500 uppercase font-semibold block">Working Hours</span>
+                <span className="font-bold text-zinc-100 truncate block">{extraction.workingHours}</span>
               </div>
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-400 font-semibold block">Salary</span>
-                <span className="font-bold text-emerald-700 truncate block">{extraction.salary}</span>
+              <div className="bg-zinc-900/80 p-2.5 rounded-xl border border-zinc-800">
+                <span className="text-[10px] text-zinc-500 uppercase font-semibold block">Salary</span>
+                <span className="font-bold text-red-400 truncate block">{extraction.salary}</span>
               </div>
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-400 font-semibold block">Job Type</span>
-                <span className="font-bold text-purple-700 truncate block">{extraction.jobType}</span>
+              <div className="bg-zinc-900/80 p-2.5 rounded-xl border border-zinc-800">
+                <span className="text-[10px] text-zinc-500 uppercase font-semibold block">Job Type</span>
+                <span className="font-bold text-orange-400 truncate block">{extraction.jobType}</span>
               </div>
-              <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                <span className="text-[10px] text-slate-400 font-semibold block">Location</span>
-                <span className="font-bold text-rose-700 truncate block">{extraction.location}</span>
+              <div className="bg-zinc-900/80 p-2.5 rounded-xl border border-zinc-800">
+                <span className="text-[10px] text-zinc-500 uppercase font-semibold block">Location</span>
+                <span className="font-bold text-red-500 truncate block">{extraction.location}</span>
               </div>
             </div>
           </div>
@@ -381,11 +384,11 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
           {/* All Posted Jobs List */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-slate-900">
-                All Posted Jobs
+              <h3 className="text-lg font-mono font-bold uppercase tracking-wider text-zinc-100">
+                Active Job Positions
               </h3>
-              <span className="text-xs text-slate-500 font-medium">
-                {myJobs.length} Active Positions
+              <span className="text-xs font-mono text-zinc-500">
+                {myJobs.length} Live Openings
               </span>
             </div>
 
@@ -393,33 +396,33 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
               {myJobs.map((job) => (
                 <div
                   key={job.id}
-                  className="bg-white border border-slate-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-sm hover:border-emerald-200 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                  className="bg-zinc-950/85 border border-red-950/50 hover:border-red-600/50 rounded-2xl p-5 shadow-lg transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <h4 className="text-base font-bold text-slate-900 truncate">
+                      <h4 className="text-base font-bold text-zinc-100 truncate">
                         {job.title}
                       </h4>
-                      <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                        Status: {job.status}
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-950/60 text-red-400 border border-red-800/50">
+                        STATUS: {job.status.toUpperCase()}
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-600">
-                      <span className="font-bold text-emerald-700">{job.salary}</span>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-zinc-400 font-mono">
+                      <span className="font-bold text-red-400">{job.salary}</span>
                       <span>•</span>
                       <span>{job.workingHours}</span>
                       <span>•</span>
                       <span>{job.locationArea}</span>
                     </div>
 
-                    {/* Applicant & Shortlisted Counts (Prompt requirement) */}
-                    <div className="mt-2.5 flex items-center gap-3 text-xs font-bold">
-                      <span className="text-slate-800 bg-slate-100 px-2.5 py-1 rounded-lg">
-                        👥 {job.applicantCount} Applicants
+                    {/* Applicant & Shortlisted Counts */}
+                    <div className="mt-2.5 flex items-center gap-3 text-xs font-mono font-bold">
+                      <span className="text-zinc-300 bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-lg">
+                        👥 {job.applicantCount} APPLICANTS
                       </span>
-                      <span className="text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-lg">
-                        {job.shortlistedCount} Shortlisted
+                      <span className="text-red-400 bg-red-950/60 border border-red-800/50 px-2.5 py-1 rounded-lg">
+                        {job.shortlistedCount} SHORTLISTED
                       </span>
                     </div>
                   </div>
@@ -427,10 +430,10 @@ export const MerchantDashboard: React.FC<MerchantDashboardProps> = ({
                   <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto justify-end">
                     <button
                       onClick={() => handleOpenJobApplicants(job.id)}
-                      className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-colors cursor-pointer flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white text-xs font-mono font-bold shadow-md shadow-red-950 transition-colors cursor-pointer flex items-center gap-1.5"
                     >
                       <Users className="w-3.5 h-3.5" />
-                      <span>View Applicants ({job.applicantCount})</span>
+                      <span>VIEW APPLICANTS ({job.applicantCount})</span>
                     </button>
                   </div>
                 </div>

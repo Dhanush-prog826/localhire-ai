@@ -3,7 +3,6 @@ import type { UserRole } from '../types';
 import { useApp } from '../context/AppContext';
 import {
   Sparkles,
-  MapPin,
   Lock,
   Mail,
   User,
@@ -53,43 +52,59 @@ export const LoginPage: React.FC<LoginPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-indigo-50/25 to-slate-100 flex flex-col justify-center py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#050505] text-slate-100 flex flex-col justify-center py-10 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Red Atmospheric Lighting & Background Flares */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-gradient-to-b from-red-600/15 via-red-950/10 to-transparent blur-[120px] rounded-full animate-pulse-crimson" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #ef4444 1px, transparent 1px), linear-gradient(to bottom, #ef4444 1px, transparent 1px)`,
+            backgroundSize: '40px 40px',
+          }}
+        />
+      </div>
+
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        {/* Brand Icon */}
-        <div className="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25 mb-3">
-          <MapPin className="w-7 h-7" />
+        {/* Arc Core Emblem */}
+        <div className="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-br from-zinc-900 via-black to-red-950 border border-red-800/60 flex items-center justify-center text-white shadow-[0_0_25px_rgba(220,38,38,0.4)] mb-4 group relative">
+          <div className="absolute inset-1 rounded-xl border border-red-500/30 animate-pulse" />
+          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-[0_0_10px_rgba(239,68,68,0.8)]">
+            <Zap className="w-3.5 h-3.5 text-black fill-black" />
+          </div>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          LocalHire <span className="text-emerald-600">AI</span>
+        {/* Large Cinematic Heading */}
+        <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight uppercase leading-none">
+          Welcome to LocalHire AI
         </h1>
-        <p className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
-          Hyperlocal Part-Time Work • Instant AI Matching
+        <p className="text-sm sm:text-base font-medium text-zinc-400 mt-2">
+          "Find work that fits you."
         </p>
       </div>
 
       {/* Main Login Card */}
-      <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-6 sm:py-8 px-5 sm:px-8 shadow-xl shadow-slate-200/60 rounded-3xl border border-slate-200/80">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-zinc-950/90 backdrop-blur-2xl py-7 sm:py-9 px-5 sm:px-8 shadow-[0_15px_50px_rgba(0,0,0,0.9)] rounded-3xl border border-red-950/70 relative">
           {onBackToHome && (
             <div className="mb-4">
               <button
                 type="button"
                 onClick={onBackToHome}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-zinc-400 hover:text-red-400 transition-colors cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
-                <span>← Back to Home</span>
+                <span>← BACK TO COMMAND CENTER</span>
               </button>
             </div>
           )}
 
           {/* Role Selection Toggle */}
           <div className="mb-6">
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
-              Select Your Role
+            <label className="block text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
+              SELECT OPERATIONAL ROLE
             </label>
-            <div className="grid grid-cols-2 gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
+            <div className="grid grid-cols-2 gap-2 bg-black/80 p-1.5 rounded-2xl border border-zinc-800">
               <button
                 type="button"
                 onClick={() => {
@@ -98,8 +113,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                 }}
                 className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   role === 'seeker'
-                    ? 'bg-indigo-600 text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)] border border-red-500/50'
+                    : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
                 <User className="w-4 h-4" />
@@ -114,8 +129,8 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                 }}
                 className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   role === 'merchant'
-                    ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)] border border-red-500/50'
+                    : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
                 <Store className="w-4 h-4" />
@@ -125,12 +140,12 @@ export const LoginPage: React.FC<LoginPageProps> = ({
           </div>
 
           {/* Form Header */}
-          <div className="mb-5 flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 className="text-base sm:text-lg font-bold text-slate-900">
-              {isSignUp ? 'Create your account' : `Sign in as ${role === 'seeker' ? 'Job Seeker' : 'Merchant'}`}
+          <div className="mb-5 flex items-center justify-between border-b border-zinc-800/80 pb-3">
+            <h2 className="text-sm sm:text-base font-bold text-white uppercase font-mono">
+              {isSignUp ? 'REGISTER PROFILE' : `ACCESS AS ${role === 'seeker' ? 'JOB SEEKER' : 'MERCHANT'}`}
             </h2>
-            <span className="text-xs text-indigo-600 font-semibold bg-indigo-50 px-2 py-0.5 rounded-md">
-              {role === 'seeker' ? 'Candidate' : 'Employer'}
+            <span className="text-[10px] font-mono text-red-400 font-bold bg-red-950/60 border border-red-800/40 px-2 py-0.5 rounded">
+              {role === 'seeker' ? 'CANDIDATE' : 'EMPLOYER'}
             </span>
           </div>
 
@@ -138,11 +153,11 @@ export const LoginPage: React.FC<LoginPageProps> = ({
           <form onSubmit={handleSubmit} className="space-y-4">
             {isSignUp && (
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  {role === 'seeker' ? 'Full Name' : 'Business Name'}
+                <label className="block text-xs font-mono text-zinc-400 mb-1">
+                  {role === 'seeker' ? 'FULL NAME' : 'BUSINESS NAME'}
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
                     <User className="w-4 h-4" />
                   </div>
                   <input
@@ -151,18 +166,18 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={role === 'seeker' ? 'e.g. Rahul Sharma' : 'e.g. ABC Supermarket'}
-                    className="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
+                    className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-red-500/80 font-medium transition-colors placeholder:text-zinc-600"
                   />
                 </div>
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Email or Mobile Number
+              <label className="block text-xs font-mono text-zinc-400 mb-1">
+                EMAIL OR MOBILE NUMBER
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
                   <Mail className="w-4 h-4" />
                 </div>
                 <input
@@ -171,17 +186,17 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="name@example.com or +91 98..."
-                  className="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
+                  className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-red-500/80 font-medium transition-colors placeholder:text-zinc-600"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Password
+              <label className="block text-xs font-mono text-zinc-400 mb-1">
+                ACCESS KEY (PASSWORD)
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
                   <Lock className="w-4 h-4" />
                 </div>
                 <input
@@ -190,7 +205,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
+                  className="w-full pl-9 pr-3.5 py-2.5 bg-black/60 border border-zinc-800 rounded-xl text-sm text-white focus:bg-black focus:outline-none focus:border-red-500/80 font-medium transition-colors placeholder:text-zinc-600"
                 />
               </div>
             </div>
@@ -198,17 +213,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-3 px-4 rounded-xl text-sm font-bold text-white shadow-md active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 ${
-                role === 'seeker'
-                  ? 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-500/20'
-                  : 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-500/20'
-              }`}
+              className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-red-600 via-red-700 to-rose-800 hover:from-red-500 hover:to-red-600 border border-red-500/50 shadow-[0_0_20px_rgba(220,38,38,0.4)] active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 uppercase tracking-wider font-mono"
             >
               {isLoading ? (
                 <Sparkles className="w-4 h-4 animate-spin" />
               ) : (
                 <>
-                  <span>{isSignUp ? 'Create Account' : 'Sign In'}</span>
+                  <span>{isSignUp ? 'CREATE PROFILE' : 'ENTER TERMINAL'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -220,55 +231,55 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             <button
               type="button"
               onClick={() => setIsSignUp(!isSignUp)}
-              className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
+              className="text-xs font-mono text-red-400 hover:text-red-300 transition-colors cursor-pointer"
             >
               {isSignUp
-                ? 'Already have an account? Sign in'
-                : "Don't have an account? Create account"}
+                ? 'Already have credentials? Sign in'
+                : "New personnel? Create account"}
             </button>
           </div>
 
           {/* 1-Click Demo Shortcut Section */}
-          <div className="mt-6 pt-5 border-t border-slate-100">
-            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 justify-center">
+          <div className="mt-6 pt-5 border-t border-zinc-800">
+            <div className="flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-red-400 mb-3 justify-center">
               <Zap className="w-3.5 h-3.5 text-amber-500" />
-              <span>1-Click Hackathon Demo Access</span>
+              <span>1-CLICK DEMO ACCESS PROTOCOL</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => handleQuickDemoLogin('seeker')}
-                className="p-2.5 rounded-xl border border-indigo-200 bg-indigo-50/70 hover:bg-indigo-100/80 text-left transition-all cursor-pointer group"
+                className="p-3 rounded-xl border border-zinc-800 bg-black/60 hover:border-red-600/50 hover:bg-zinc-900 text-left transition-all cursor-pointer group"
               >
-                <div className="flex items-center gap-1.5">
-                  <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-red-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
                     R
                   </div>
-                  <span className="text-xs font-bold text-indigo-950 truncate">
+                  <span className="text-xs font-bold text-zinc-100 group-hover:text-red-400 transition-colors truncate">
                     Demo Seeker
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500 mt-1 pl-7">
-                  Rahul (19y, Student • Excel)
+                <p className="text-[11px] font-mono text-zinc-400 mt-1 pl-8">
+                  Rahul (19y • 94% Match)
                 </p>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleQuickDemoLogin('merchant')}
-                className="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50/70 hover:bg-emerald-100/80 text-left transition-all cursor-pointer group"
+                className="p-3 rounded-xl border border-zinc-800 bg-black/60 hover:border-red-600/50 hover:bg-zinc-900 text-left transition-all cursor-pointer group"
               >
-                <div className="flex items-center gap-1.5">
-                  <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shrink-0">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-zinc-800 text-red-400 border border-red-600/40 flex items-center justify-center text-xs font-bold shrink-0">
                     A
                   </div>
-                  <span className="text-xs font-bold text-emerald-950 truncate">
+                  <span className="text-xs font-bold text-zinc-100 group-hover:text-red-400 transition-colors truncate">
                     Demo Merchant
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500 mt-1 pl-7">
-                  ABC Supermarket (12 Applicants)
+                <p className="text-[11px] font-mono text-zinc-400 mt-1 pl-8">
+                  ABC Supermarket (12 Apps)
                 </p>
               </button>
             </div>
@@ -276,11 +287,12 @@ export const LoginPage: React.FC<LoginPageProps> = ({
         </div>
 
         {/* Security badge */}
-        <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-600">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>Hyperlocal Prototype • Safe mock authentication active</span>
+        <div className="mt-4 flex items-center justify-center gap-1.5 text-xs font-mono text-zinc-500">
+          <ShieldCheck className="w-4 h-4 text-red-500" />
+          <span>LocalHire AI Protocol // Safe Mock Telemetry</span>
         </div>
       </div>
     </div>
   );
 };
+

@@ -1,8 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
 import {
-  Sparkles,
-  MapPin,
   LogOut,
   Repeat,
   Smartphone,
@@ -10,7 +8,10 @@ import {
   User,
   Store,
   Home,
-  ArrowRight,
+  Briefcase,
+  PlusCircle,
+  LogIn,
+  Zap,
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -19,6 +20,8 @@ interface NavbarProps {
   currentView?: 'home' | 'portal' | 'login';
   onNavigateHome?: () => void;
   onNavigatePortal?: () => void;
+  onFindJob?: () => void;
+  onPostJob?: () => void;
   onOpenLogin?: () => void;
 }
 
@@ -28,72 +31,122 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentView = 'home',
   onNavigateHome,
   onNavigatePortal,
+  onFindJob,
+  onPostJob,
   onOpenLogin,
 }) => {
   const { currentUser, seekerProfile, merchantProfile, switchRole, logout } = useApp();
 
   return (
-    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand Logo & Tagline (Clickable to go Home) */}
+    <header className="sticky top-0 z-40 bg-[#050505]/85 backdrop-blur-xl border-b border-red-950/40 shadow-[0_4px_30px_rgba(220,38,38,0.08)]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+        {/* Brand Logo & Arc Emblem (Clickable to go Home) */}
         <div
           onClick={onNavigateHome}
-          className="flex items-center gap-2.5 text-left group cursor-pointer"
-          title="Go to Home"
+          className="flex items-center gap-2.5 text-left group cursor-pointer shrink-0"
+          title="Return to Command Center"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-            <MapPin className="w-5 h-5 text-white" />
+          {/* Arc Core Emblem */}
+          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-zinc-900 via-black to-red-950/80 border border-red-800/50 flex items-center justify-center text-white shadow-[0_0_15px_rgba(220,38,38,0.35)] group-hover:shadow-[0_0_25px_rgba(220,38,38,0.6)] group-hover:border-red-500 transition-all">
+            <div className="absolute inset-1 rounded-lg border border-red-500/30 animate-pulse" />
+            <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-red-600 to-amber-500 flex items-center justify-center shadow-[0_0_8px_rgba(239,68,68,0.8)]">
+              <Zap className="w-2.5 h-2.5 text-black fill-black" />
+            </div>
           </div>
+
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-lg tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
-                LocalHire<span className="text-emerald-600"> AI</span>
-              </span>
-              <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                <Sparkles className="w-2.5 h-2.5 mr-0.5 text-emerald-600" />
-                Hyperlocal
+              <span className="font-extrabold text-lg tracking-tight text-white group-hover:text-red-400 transition-colors">
+                LOCALHIRE<span className="text-red-500 ml-1 text-sm bg-red-950/60 px-1.5 py-0.5 rounded border border-red-800/60 shadow-[0_0_8px_rgba(220,38,38,0.4)]">AI</span>
               </span>
             </div>
-            <p className="text-xs text-slate-500 hidden sm:block">
-              Find the right part-time work, near you.
+            <p className="text-[10px] font-mono tracking-widest text-zinc-400 hidden sm:block uppercase">
+              HYPERLOCAL COMMAND // 5KM
             </p>
           </div>
         </div>
 
+        {/* Central Tactical Navigation (Home, Find Jobs, Post a Job, Login) */}
+        <nav className="hidden md:flex items-center gap-1 bg-zinc-950/80 border border-red-950/40 p-1 rounded-xl shadow-inner">
+          <button
+            type="button"
+            onClick={onNavigateHome}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              currentView === 'home'
+                ? 'bg-red-600/20 text-white border border-red-600/50 shadow-[0_0_10px_rgba(220,38,38,0.3)]'
+                : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
+            }`}
+          >
+            <Home className="w-3.5 h-3.5 text-red-400" />
+            <span>Home</span>
+            {currentView === 'home' && (
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_6px_#ef4444]" />
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={onFindJob || onNavigatePortal}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              currentView === 'portal' && currentUser?.role === 'seeker'
+                ? 'bg-red-600/20 text-white border border-red-600/50 shadow-[0_0_10px_rgba(220,38,38,0.3)]'
+                : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
+            }`}
+          >
+            <Briefcase className="w-3.5 h-3.5 text-zinc-300" />
+            <span>Find Jobs</span>
+            {currentView === 'portal' && currentUser?.role === 'seeker' && (
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_6px_#ef4444]" />
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={onPostJob || onNavigatePortal}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              currentView === 'portal' && currentUser?.role === 'merchant'
+                ? 'bg-red-600/20 text-white border border-red-600/50 shadow-[0_0_10px_rgba(220,38,38,0.3)]'
+                : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
+            }`}
+          >
+            <PlusCircle className="w-3.5 h-3.5 text-zinc-300" />
+            <span>Post a Job</span>
+            {currentView === 'portal' && currentUser?.role === 'merchant' && (
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_6px_#ef4444]" />
+            )}
+          </button>
+
+          {!currentUser && (
+            <button
+              type="button"
+              onClick={onOpenLogin}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                currentView === 'login'
+                  ? 'bg-red-600/20 text-white border border-red-600/50 shadow-[0_0_10px_rgba(220,38,38,0.3)]'
+                : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
+              }`}
+            >
+              <LogIn className="w-3.5 h-3.5 text-red-400" />
+              <span>Login</span>
+            </button>
+          )}
+        </nav>
+
         {/* Right side controls: User session, Role switcher, Mobile frame toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* If on portal, provide quick button to go back Home */}
-          {currentView === 'portal' && onNavigateHome && (
-            <button
-              type="button"
-              onClick={onNavigateHome}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/70 border border-slate-200 transition-colors cursor-pointer"
-              title="Return to Home Page"
-            >
-              <Home className="w-3.5 h-3.5 text-indigo-600" />
-              <span className="hidden xs:inline">Home</span>
-            </button>
-          )}
-
-          {/* If on home view and logged in, show button to jump into dashboard */}
-          {currentView === 'home' && currentUser && onNavigatePortal && (
-            <button
-              type="button"
-              onClick={onNavigatePortal}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all cursor-pointer"
-            >
-              <span>Go to {currentUser.role === 'seeker' ? 'Seeker App' : 'Merchant App'}</span>
-              <ArrowRight className="w-3 h-3" />
-            </button>
-          )}
-
+        <div className="flex items-center gap-2 sm:gap-2.5">
           {currentUser ? (
             <div className="flex items-center gap-2">
               {/* Active Profile Pill */}
-              <div className="flex items-center gap-2 pl-2 pr-3 py-1 bg-slate-100 rounded-2xl border border-slate-200">
+              <div
+                onClick={onNavigatePortal}
+                className="flex items-center gap-2 pl-2 pr-3 py-1 bg-zinc-950/90 rounded-xl border border-red-950/60 shadow-xs cursor-pointer hover:border-red-600/50 transition-colors"
+                title="Open Command Dashboard"
+              >
                 <div
-                  className={`w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold ${
-                    currentUser.role === 'seeker' ? 'bg-indigo-600' : 'bg-emerald-600'
+                  className={`w-6 h-6 rounded-lg flex items-center justify-center text-white text-xs font-bold shadow-[0_0_8px_rgba(220,38,38,0.4)] ${
+                    currentUser.role === 'seeker'
+                      ? 'bg-gradient-to-tr from-red-700 to-red-500'
+                      : 'bg-gradient-to-tr from-zinc-800 to-red-700'
                   }`}
                 >
                   {currentUser.role === 'seeker' ? (
@@ -103,18 +156,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                   )}
                 </div>
                 <div className="text-left hidden xs:block sm:block">
-                  <p className="text-xs font-bold text-slate-900 leading-tight">
+                  <p className="text-xs font-bold text-zinc-200 leading-tight">
                     {currentUser.role === 'seeker'
                       ? seekerProfile.name
                       : merchantProfile.businessName}
                   </p>
-                  <p className="text-[10px] font-semibold text-slate-500 uppercase leading-none">
-                    {currentUser.role === 'seeker' ? 'Job Seeker' : 'Merchant'}
+                  <p className="text-[10px] font-mono font-semibold text-red-400 uppercase leading-none">
+                    {currentUser.role === 'seeker' ? 'SEEKER CORE' : 'MERCHANT HUB'}
                   </p>
                 </div>
               </div>
 
-              {/* Quick Role Switcher Button (Demo feature) */}
+              {/* Quick Role Switcher Button */}
               <button
                 type="button"
                 onClick={() =>
@@ -123,11 +176,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 title={`Switch role to ${
                   currentUser.role === 'seeker' ? 'Merchant' : 'Job Seeker'
                 }`}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 shadow-2xs transition-colors cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold text-zinc-300 bg-zinc-900 border border-zinc-800 hover:border-red-600/40 hover:text-white transition-all cursor-pointer shadow-xs"
               >
-                <Repeat className="w-3.5 h-3.5 text-indigo-600" />
+                <Repeat className="w-3.5 h-3.5 text-red-500" />
                 <span>
-                  Switch to {currentUser.role === 'seeker' ? 'Merchant' : 'Seeker'}
+                  {currentUser.role === 'seeker' ? 'Merchant' : 'Seeker'}
                 </span>
               </button>
 
@@ -136,7 +189,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="button"
                 onClick={logout}
                 title="Sign out"
-                className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors cursor-pointer"
+                className="p-1.5 text-zinc-400 hover:text-red-400 hover:bg-red-950/40 rounded-xl border border-transparent hover:border-red-950 transition-colors cursor-pointer"
               >
                 <LogOut className="w-4 h-4" />
               </button>
@@ -145,7 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onOpenLogin}
-              className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all cursor-pointer"
+              className="px-4 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 border border-red-500/50 shadow-[0_0_15px_rgba(220,38,38,0.4)] transition-all cursor-pointer"
             >
               Sign In
             </button>
@@ -156,17 +209,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             type="button"
             onClick={() => setIsMobileFrame(!isMobileFrame)}
             title={isMobileFrame ? 'Switch to responsive view' : 'Preview mobile hackathon frame'}
-            className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 transition-colors ml-1 cursor-pointer"
+            className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-zinc-400 bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 transition-colors ml-1 cursor-pointer"
           >
             {isMobileFrame ? (
               <>
-                <Monitor className="w-3.5 h-3.5 text-slate-500" />
+                <Monitor className="w-3.5 h-3.5 text-red-400" />
                 <span>Full View</span>
               </>
             ) : (
               <>
-                <Smartphone className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Mobile Preview</span>
+                <Smartphone className="w-3.5 h-3.5 text-red-400" />
+                <span>HUD Frame</span>
               </>
             )}
           </button>
@@ -175,3 +228,4 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
+

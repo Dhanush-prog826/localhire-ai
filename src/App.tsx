@@ -121,13 +121,15 @@ function MainAppShell() {
 
   // Responsive full-width layout
   const content = (
-    <div className="min-h-screen flex flex-col bg-slate-50 relative">
+    <div className="min-h-screen flex flex-col bg-[#050505] text-slate-100 relative selection:bg-red-600 selection:text-white">
       <Navbar
         isMobileFrame={isMobileFrame}
         setIsMobileFrame={setIsMobileFrame}
         currentView={currentView}
         onNavigateHome={() => setCurrentView('home')}
         onNavigatePortal={() => setCurrentView('portal')}
+        onFindJob={handleFindJob}
+        onPostJob={handlePostJob}
         onOpenLogin={() => setCurrentView('login')}
       />
 
@@ -157,49 +159,51 @@ function MainAppShell() {
   // Smartphone simulator for hackathon showcase
   if (isMobileFrame) {
     return (
-      <div className="min-h-screen bg-slate-900 py-6 px-4 flex flex-col items-center justify-center">
+      <div className="min-h-screen bg-black/95 py-6 px-4 flex flex-col items-center justify-center">
         {/* Frame Top Controls */}
-        <div className="text-center mb-3 text-slate-400 text-xs flex items-center gap-3">
-          <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-            <Sparkles className="w-3.5 h-3.5" />
-            Hackathon Mobile Prototype View
+        <div className="text-center mb-3 text-zinc-400 text-xs flex items-center gap-3">
+          <span className="flex items-center gap-1.5 text-red-400 font-mono font-bold uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-red-500" />
+            HOLOGRAPHIC MOBILE VIEW // 412x860
           </span>
-          <span>•</span>
+          <span className="text-zinc-600">•</span>
           <button
             type="button"
             onClick={() => setIsMobileFrame(false)}
-            className="text-white underline hover:text-indigo-300 transition-colors cursor-pointer"
+            className="text-white underline hover:text-red-400 transition-colors cursor-pointer font-mono"
           >
-            Switch to Full Width
+            [FULL VIEW]
           </button>
         </div>
 
         {/* Smartphone Shell Frame */}
-        <div className="w-full max-w-[412px] h-[860px] bg-slate-950 rounded-[48px] p-3 shadow-2xl ring-12 ring-slate-800 ring-offset-4 ring-offset-slate-950 flex flex-col overflow-hidden relative">
+        <div className="w-full max-w-[412px] h-[860px] bg-black rounded-[48px] p-3 shadow-[0_0_50px_rgba(220,38,38,0.25)] ring-8 ring-zinc-900 ring-offset-4 ring-offset-black flex flex-col overflow-hidden relative border border-red-950/60">
           {/* Speaker / Dynamic Island Notch */}
-          <div className="w-28 h-5 bg-slate-900 rounded-full mx-auto my-1.5 flex items-center justify-center shrink-0 z-50">
-            <div className="w-3 h-3 rounded-full bg-slate-800 mr-2" />
-            <div className="w-2.5 h-2.5 rounded-full bg-indigo-950/70" />
+          <div className="w-28 h-5 bg-zinc-950 rounded-full mx-auto my-1.5 flex items-center justify-center shrink-0 z-50 border border-zinc-900">
+            <div className="w-3 h-3 rounded-full bg-zinc-900 mr-2" />
+            <div className="w-2.5 h-2.5 rounded-full bg-red-950/70" />
           </div>
 
           {/* Mobile Status Bar */}
-          <div className="px-6 py-1 flex items-center justify-between text-[11px] font-semibold text-slate-700 bg-white shrink-0 z-40 select-none">
-            <span>9:41 AM</span>
-            <div className="flex items-center gap-1.5 text-slate-600">
+          <div className="px-6 py-1 flex items-center justify-between text-[11px] font-mono font-bold text-zinc-400 bg-black shrink-0 z-40 select-none border-b border-zinc-900">
+            <span>09:41</span>
+            <div className="flex items-center gap-1.5 text-zinc-400">
               <Signal className="w-3 h-3" />
               <Wifi className="w-3 h-3" />
-              <Battery className="w-3.5 h-3.5 text-emerald-600" />
+              <Battery className="w-3.5 h-3.5 text-red-500" />
             </div>
           </div>
 
           {/* Screen Content Scroll Area */}
-          <div className="flex-1 bg-slate-50 overflow-y-auto relative rounded-b-[36px] flex flex-col">
+          <div className="flex-1 bg-[#050505] text-slate-100 overflow-y-auto relative rounded-b-[36px] flex flex-col">
             <Navbar
               isMobileFrame={isMobileFrame}
               setIsMobileFrame={setIsMobileFrame}
               currentView={currentView}
               onNavigateHome={() => setCurrentView('home')}
               onNavigatePortal={() => setCurrentView('portal')}
+              onFindJob={handleFindJob}
+              onPostJob={handlePostJob}
               onOpenLogin={() => setCurrentView('login')}
             />
 
