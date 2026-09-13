@@ -9,17 +9,25 @@ import {
   Monitor,
   User,
   Store,
+  Home,
+  ArrowRight,
 } from 'lucide-react';
 
 interface NavbarProps {
   isMobileFrame: boolean;
   setIsMobileFrame: (val: boolean) => void;
+  currentView?: 'home' | 'portal' | 'login';
+  onNavigateHome?: () => void;
+  onNavigatePortal?: () => void;
   onOpenLogin?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   isMobileFrame,
   setIsMobileFrame,
+  currentView = 'home',
+  onNavigateHome,
+  onNavigatePortal,
   onOpenLogin,
 }) => {
   const { currentUser, seekerProfile, merchantProfile, switchRole, logout } = useApp();
@@ -27,14 +35,18 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand Logo & Tagline */}
-        <div className="flex items-center gap-2.5 text-left group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+        {/* Brand Logo & Tagline (Clickable to go Home) */}
+        <div
+          onClick={onNavigateHome}
+          className="flex items-center gap-2.5 text-left group cursor-pointer"
+          title="Go to Home"
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-emerald-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
             <MapPin className="w-5 h-5 text-white" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-bold text-lg tracking-tight text-slate-900">
+              <span className="font-bold text-lg tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
                 LocalHire<span className="text-emerald-600"> AI</span>
               </span>
               <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -50,6 +62,31 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right side controls: User session, Role switcher, Mobile frame toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* If on portal, provide quick button to go back Home */}
+          {currentView === 'portal' && onNavigateHome && (
+            <button
+              type="button"
+              onClick={onNavigateHome}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200/70 border border-slate-200 transition-colors cursor-pointer"
+              title="Return to Home Page"
+            >
+              <Home className="w-3.5 h-3.5 text-indigo-600" />
+              <span className="hidden xs:inline">Home</span>
+            </button>
+          )}
+
+          {/* If on home view and logged in, show button to jump into dashboard */}
+          {currentView === 'home' && currentUser && onNavigatePortal && (
+            <button
+              type="button"
+              onClick={onNavigatePortal}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm transition-all cursor-pointer"
+            >
+              <span>Go to {currentUser.role === 'seeker' ? 'Seeker App' : 'Merchant App'}</span>
+              <ArrowRight className="w-3 h-3" />
+            </button>
+          )}
+
           {currentUser ? (
             <div className="flex items-center gap-2">
               {/* Active Profile Pill */}

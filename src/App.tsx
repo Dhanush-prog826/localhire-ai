@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { SeekerTab, MerchantTab, Job } from './types';
 import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/Navbar';
+import { HomePage } from './components/HomePage';
 import { LoginPage } from './components/LoginPage';
 import { SeekerDashboard } from './components/seeker/SeekerDashboard';
 import { MerchantDashboard } from './components/merchant/MerchantDashboard';
@@ -11,13 +12,21 @@ import { Toast } from './components/Toast';
 import { Sparkles, Battery, Wifi, Signal } from 'lucide-react';
 
 function MainAppShell() {
-  const { currentUser, applyToJob } = useApp();
+  const { currentUser, login, switchRole, applyToJob } = useApp();
 
+  const [currentView, setCurrentView] = useState<'home' | 'portal' | 'login'>('home');
   const [seekerTab, setSeekerTab] = useState<SeekerTab>('dashboard');
   const [merchantTab, setMerchantTab] = useState<MerchantTab>('dashboard');
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isMobileFrame, setIsMobileFrame] = useState<boolean>(false);
+
+  // If user logs out while on portal, transition back to home
+  useEffect(() => {
+    if (!currentUser && currentView === 'portal') {
+      setCurrentView('home');
+    }
+  }, [currentUser, currentView]);
 
   const showToast = (message: string) => {
     setToastMessage(message);
@@ -31,18 +40,52 @@ function MainAppShell() {
     showToast(res.message);
   };
 
-  // If not logged in, render professional Login Portal
-  if (!currentUser) {
+  const handleFindJob = () => {
+    if (!currentUser) {
+      login('seeker', '', true);
+    } else if (currentUser.role !== 'seeker') {
+      switchRole('seeker');
+    }
+    setSeekerTab('jobs');
+    setCurrentView('portal');
+    showToast('Switched to Job Seeker mode (Rahul • 94% Match)');
+  };
+
+  const handlePostJob = () => {
+    if (!currentUser) {
+      login('merchant', '', true);
+    } else if (currentUser.role !== 'merchant') {
+      switchRole('merchant');
+    }
+    setMerchantTab('dashboard');
+    setCurrentView('portal');
+    showToast('Switched to Merchant mode (ABC Supermarket)');
+  };
+
+  // If viewing explicit Login Page
+  if (currentView === 'login') {
     return (
       <>
-        <LoginPage />
+        <LoginPage
+          onLoginSuccess={() => setCurrentView('portal')}
+          onBackToHome={() => setCurrentView('home')}
+        />
         <Toast message={toastMessage} onClose={() => setToastMessage(null)} />
       </>
     );
   }
 
-  // Active Role views
+  // Active Role Dashboard
   const renderDashboard = () => {
+    if (!currentUser) {
+      return (
+        <LoginPage
+          onLoginSuccess={() => setCurrentView('portal')}
+          onBackToHome={() => setCurrentView('home')}
+        />
+      );
+    }
+
     if (currentUser.role === 'seeker') {
       return (
         <SeekerDashboard
@@ -62,24 +105,44 @@ function MainAppShell() {
     );
   };
 
-  // Content Shell
+  // View body
+  const renderMainContent = () => {
+    if (currentView === 'home') {
+      return (
+        <HomePage
+          onFindJob={handleFindJob}
+          onPostJob={handlePostJob}
+          onSignIn={() => setCurrentView('login')}
+        />
+      );
+    }
+    return renderDashboard();
+  };
+
+  // Responsive full-width layout
   const content = (
     <div className="min-h-screen flex flex-col bg-slate-50 relative">
       <Navbar
         isMobileFrame={isMobileFrame}
         setIsMobileFrame={setIsMobileFrame}
+        currentView={currentView}
+        onNavigateHome={() => setCurrentView('home')}
+        onNavigatePortal={() => setCurrentView('portal')}
+        onOpenLogin={() => setCurrentView('login')}
       />
 
-      <main className="flex-1 w-full">{renderDashboard()}</main>
+      <main className="flex-1 w-full">{renderMainContent()}</main>
 
-      {/* Mobile Bottom Navigation Bar */}
-      <BottomNav
-        role={currentUser.role}
-        seekerTab={seekerTab}
-        setSeekerTab={setSeekerTab}
-        merchantTab={merchantTab}
-        setMerchantTab={setMerchantTab}
-      />
+      {/* Show BottomNav only when on portal and user is logged in */}
+      {currentView === 'portal' && currentUser && (
+        <BottomNav
+          role={currentUser.role}
+          seekerTab={seekerTab}
+          setSeekerTab={setSeekerTab}
+          merchantTab={merchantTab}
+          setMerchantTab={setMerchantTab}
+        />
+      )}
 
       <JobDetailModal
         job={selectedJob}
@@ -91,7 +154,7 @@ function MainAppShell() {
     </div>
   );
 
-  // If mobile frame is enabled on desktop, render within a sleek smartphone mockup container
+  // Smartphone simulator for hackathon showcase
   if (isMobileFrame) {
     return (
       <div className="min-h-screen bg-slate-900 py-6 px-4 flex flex-col items-center justify-center">
@@ -134,18 +197,26 @@ function MainAppShell() {
             <Navbar
               isMobileFrame={isMobileFrame}
               setIsMobileFrame={setIsMobileFrame}
+              currentView={currentView}
+              onNavigateHome={() => setCurrentView('home')}
+              onNavigatePortal={() => setCurrentView('portal')}
+              onOpenLogin={() => setCurrentView('login')}
             />
 
-            <div className="flex-1 pb-16">{renderDashboard()}</div>
+            <div className={`flex-1 ${currentView === 'portal' ? 'pb-16' : ''}`}>
+              {renderMainContent()}
+            </div>
 
             {/* Mobile Bottom Navigation Bar inside frame */}
-            <BottomNav
-              role={currentUser.role}
-              seekerTab={seekerTab}
-              setSeekerTab={setSeekerTab}
-              merchantTab={merchantTab}
-              setMerchantTab={setMerchantTab}
-            />
+            {currentView === 'portal' && currentUser && (
+              <BottomNav
+                role={currentUser.role}
+                seekerTab={seekerTab}
+                setSeekerTab={setSeekerTab}
+                merchantTab={merchantTab}
+                setMerchantTab={setMerchantTab}
+              />
+            )}
 
             <JobDetailModal
               job={selectedJob}

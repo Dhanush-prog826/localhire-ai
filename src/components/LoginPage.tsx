@@ -9,15 +9,20 @@ import {
   User,
   Store,
   ArrowRight,
+  ArrowLeft,
   ShieldCheck,
   Zap,
 } from 'lucide-react';
 
 interface LoginPageProps {
   onLoginSuccess?: () => void;
+  onBackToHome?: () => void;
 }
 
-export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
+export const LoginPage: React.FC<LoginPageProps> = ({
+  onLoginSuccess,
+  onBackToHome,
+}) => {
   const { login } = useApp();
 
   const [role, setRole] = useState<UserRole>('seeker');
@@ -66,6 +71,19 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
       {/* Main Login Card */}
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-6 sm:py-8 px-5 sm:px-8 shadow-xl shadow-slate-200/60 rounded-3xl border border-slate-200/80">
+          {onBackToHome && (
+            <div className="mb-4">
+              <button
+                type="button"
+                onClick={onBackToHome}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors cursor-pointer"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>← Back to Home</span>
+              </button>
+            </div>
+          )}
+
           {/* Role Selection Toggle */}
           <div className="mb-6">
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
